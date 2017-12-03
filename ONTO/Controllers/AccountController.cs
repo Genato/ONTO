@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ONTO.Controllers
 {
-    public class UserController : Controller
+    public class AccountController : Controller
     {
         // GET: User
         public new ActionResult Profile()
