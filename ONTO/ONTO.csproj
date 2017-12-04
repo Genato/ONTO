@@ -182,6 +182,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Identity\ApplicationSignInManager.cs" />
+    <Compile Include="Identity\ApplicationUserManager.cs" />
+    <Compile Include="Migrations\201712042051303_InitialCreate.cs" />
+    <Compile Include="Migrations\201712042051303_InitialCreate.Designer.cs">
+      <DependentUpon>201712042051303_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712042058314_ONTO_TEST_Migration.cs" />
+    <Compile Include="Migrations\201712042058314_ONTO_TEST_Migration.Designer.cs">
+      <DependentUpon>201712042058314_ONTO_TEST_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712042059369_ONTO_TEST_Migration_2.cs" />
+    <Compile Include="Migrations\201712042059369_ONTO_TEST_Migration_2.Designer.cs">
+      <DependentUpon>201712042059369_ONTO_TEST_Migration_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712042101254_ONTO_TEST_Migration_3.cs" />
+    <Compile Include="Migrations\201712042101254_ONTO_TEST_Migration_3.Designer.cs">
+      <DependentUpon>201712042101254_ONTO_TEST_Migration_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -233,6 +252,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712042051303_InitialCreate.resx">
+      <DependentUpon>201712042051303_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712042058314_ONTO_TEST_Migration.resx">
+      <DependentUpon>201712042058314_ONTO_TEST_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712042059369_ONTO_TEST_Migration_2.resx">
+      <DependentUpon>201712042059369_ONTO_TEST_Migration_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712042101254_ONTO_TEST_Migration_3.resx">
+      <DependentUpon>201712042101254_ONTO_TEST_Migration_3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
