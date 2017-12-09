@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using ONTO.BusinessLogic;
 using ONTO.Identity;
 using ONTO.Models;
 using System;
@@ -62,10 +63,11 @@ namespace ONTO.Controllers
         //[ValidateAntiForgeryToken]
         public new async Task<ActionResult> Profile()
         {
-            //if (ModelState.IsValid)
-            //{
+            if (ModelState.IsValid)
+            {
                 var user = new ApplicationUser { UserName = "druidhr@gmail.com", Email = "druidhr@gmail.com" };
                 var result = await UserManager.CreateAsync(user, "genato1510");
+
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -78,11 +80,13 @@ namespace ONTO.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                //AddErrors(result);
-            //}
+
+                Helpers businessLogic = new Helpers();
+                businessLogic.AddErrors(ModelState, result);
+            }
 
             // If we got this far, something failed, redisplay form
-            return View("ERROR");
+            return View("ERROR", ModelState);
         }
 
     }

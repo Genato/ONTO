@@ -242,3 +242,4 @@ ModelManifest.xml
 .fake/
 *.docx
 /ONTO/Migrations
+/WebEssentials2015-Settings.json
