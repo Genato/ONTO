@@ -22,6 +22,7 @@ namespace ONTO.Controllers
         {
         }
 
+        // Uncomment when you whant your controller injected with dependecy injection (Atm dependency injection is still not setted up)
         //public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         //{
         //    UserManager = userManager;
