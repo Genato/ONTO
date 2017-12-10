@@ -183,8 +183,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Identity\ApplicationSignInManager.cs" />
-    <Compile Include="Identity\ApplicationUserManager.cs" />
+    <Compile Include="IdentityConfig\ApplicationSignInManager.cs" />
+    <Compile Include="IdentityConfig\ApplicationUserManager.cs" />
     <Compile Include="Migrations\IdentityMigrations\201712102014037_InitialCreate.cs" />
     <Compile Include="Migrations\IdentityMigrations\201712102014037_InitialCreate.Designer.cs">
       <DependentUpon>201712102014037_InitialCreate.cs</DependentUpon>
