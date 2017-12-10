@@ -185,7 +185,7 @@
     </Compile>
     <Compile Include="IdentityConfig\ApplicationSignInManager.cs" />
     <Compile Include="IdentityConfig\ApplicationUserManager.cs" />
-    <Compile Include="Models\DbContexts\IdentityDbContext.cs" />
+    <Compile Include="Models\DbContexts\IdentityUserDbContext.cs" />
     <Compile Include="Models\IdentityModels\ApplicationIdentityUser.cs" />
     <Compile Include="Models\ONTOModels\KatalogKljučnihBrojevaOtpada.cs" />
     <Compile Include="Models\DbContexts\OntoDbContext.cs" />
