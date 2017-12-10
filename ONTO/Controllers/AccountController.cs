@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.Owin;
 using ONTO.BusinessLogic;
 using ONTO.Identity;
 using ONTO.Models;
+using ONTO.ViewModels.AccountViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,24 +53,24 @@ namespace ONTO.Controllers
         }
 
         // GET: User
-        public new ActionResult Profile()
+        public ActionResult Register()
         {
             return View();
         }
 
         // POST: /Account/Register
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public new async Task<ActionResult> Profile()
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel user)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = "druidhr@gmail.com", Email = "druidhr@gmail.com" };
-                var result = await UserManager.CreateAsync(user, "genato1510");
+                var _user = new ApplicationUser { UserName = user.Email, Email = user.Email };
+                var result = await UserManager.CreateAsync(_user, user.Password);
 
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    await SignInManager.SignInAsync(_user, isPersistent: false, rememberBrowser: false);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -82,5 +83,45 @@ namespace ONTO.Controllers
             return View("ERROR", ModelState);
         }
 
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        //
+        // POST: /Account/Login
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
+            return RedirectToAction("Index", "Home");
+
+            //switch (result)
+            //{
+            //    case SignInStatus.Success:
+            //        return RedirectToLocal(returnUrl);
+            //    case SignInStatus.LockedOut:
+            //        return View("Lockout");
+            //    case SignInStatus.RequiresVerification:
+            //        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+            //    case SignInStatus.Failure:
+            //    default:
+            //        ModelState.AddModelError("", "Invalid login attempt.");
+            //        return View(model);
+            //}
+        }
     }
 }
