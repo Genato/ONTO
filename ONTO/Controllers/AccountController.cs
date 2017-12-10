@@ -54,6 +54,7 @@ namespace ONTO.Controllers
         }
 
         // GET: User
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -62,11 +63,12 @@ namespace ONTO.Controllers
         // POST: /Account/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<ActionResult> Register(RegisterViewModel user)
         {
             if (ModelState.IsValid)
             {
-                var _user = new ApplicationUser { UserName = user.Email, Email = user.Email };
+                var _user = new ApplicationIdentityUser { UserName = user.Email, Email = user.Email };
                 var result = await UserManager.CreateAsync(_user, user.Password);
 
                 if (result.Succeeded)
