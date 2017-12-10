@@ -6,9 +6,9 @@ using System.Web;
 
 namespace ONTO.Models.ONTOModels
 {
-    public class KatalogKljučnihBrojevaOtpadaDBContext : DbContext
+    public class OntoDbContext : DbContext
     {
-        public KatalogKljučnihBrojevaOtpadaDBContext()
+        public OntoDbContext()
             : base("PostgreSQLCnnection")
         {
         }
