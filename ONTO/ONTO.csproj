@@ -185,11 +185,6 @@
     </Compile>
     <Compile Include="IdentityConfig\ApplicationSignInManager.cs" />
     <Compile Include="IdentityConfig\ApplicationUserManager.cs" />
-    <Compile Include="Migrations\IdentityMigrations\201712102014037_InitialCreate.cs" />
-    <Compile Include="Migrations\IdentityMigrations\201712102014037_InitialCreate.Designer.cs">
-      <DependentUpon>201712102014037_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\IdentityMigrations\Configuration.cs" />
     <Compile Include="Models\DbContexts\IdentityDbContext.cs" />
     <Compile Include="Models\IdentityModels\ApplicationIdentityUser.cs" />
     <Compile Include="Models\ONTOModels\KatalogKljučnihBrojevaOtpada.cs" />
@@ -240,6 +235,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Migrations\IdentityMigrations\" />
+    <Folder Include="Migrations\ONTOMigrations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -248,11 +245,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\IdentityMigrations\201712102014037_InitialCreate.resx">
-      <DependentUpon>201712102014037_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
