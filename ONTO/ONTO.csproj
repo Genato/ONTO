@@ -193,6 +193,10 @@
     <Compile Include="Migrations\ONTOMigrations\201801071924225_InitialCreate.Designer.cs">
       <DependentUpon>201801071924225_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ONTOMigrations\201801072042420_PrateciList_Model.cs" />
+    <Compile Include="Migrations\ONTOMigrations\201801072042420_PrateciList_Model.Designer.cs">
+      <DependentUpon>201801072042420_PrateciList_Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ONTOMigrations\Configuration.cs" />
     <Compile Include="Models\DbContexts\IdentityUserDbContext.cs" />
     <Compile Include="Models\IdentityModels\ApplicationIdentityUser.cs" />
@@ -260,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ONTOMigrations\201801071924225_InitialCreate.resx">
       <DependentUpon>201801071924225_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ONTOMigrations\201801072042420_PrateciList_Model.resx">
+      <DependentUpon>201801072042420_PrateciList_Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
