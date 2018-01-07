@@ -241,5 +241,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 *.docx
-/ONTO/Migrations
 /WebEssentials2015-Settings.json
