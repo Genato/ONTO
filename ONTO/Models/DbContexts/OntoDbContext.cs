@@ -9,7 +9,7 @@ namespace ONTO.Models.ONTOModels
     public class OntoDbContext : DbContext
     {
         public OntoDbContext()
-            : base("PostgreSQLCnnection")
+            : base("PostgreONTOConnection")
         {
         }
 
