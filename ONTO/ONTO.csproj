@@ -198,6 +198,7 @@
     <Compile Include="Models\IdentityModels\ApplicationIdentityUser.cs" />
     <Compile Include="Models\ONTOModels\KatalogKljučnihBrojevaOtpada.cs" />
     <Compile Include="Models\DbContexts\OntoDbContext.cs" />
+    <Compile Include="Models\ONTOModels\PrateciList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountViewModels\LoginViewModel.cs" />

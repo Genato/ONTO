@@ -14,6 +14,7 @@ namespace ONTO.Models.ONTOModels
         }
 
         public DbSet<KatalogKljučnihBrojevaOtpada> KatalogKljučnihBrojevaOtpada { get; set; }
+        public DbSet<PrateciList> PrateciList { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -22,6 +23,7 @@ namespace ONTO.Models.ONTOModels
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<KatalogKljučnihBrojevaOtpada>().ToTable("Katalog_Kljucnih_Brojeva_Otpada");
+            modelBuilder.Entity<PrateciList>().ToTable("Prateci_List");
         }
     }
 }
