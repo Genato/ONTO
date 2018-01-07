@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using ONTO.BusinessLogic;
 using ONTO.Identity;
 using ONTO.Models;
@@ -15,43 +16,9 @@ namespace ONTO.Controllers
 {
     public class AccountController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
-
-        public AccountController()
-        {
-        }
-
-        // Uncomment when you whant your controller injected with dependecy injection (Atm dependency injection is still not setted up)
-        //public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-        //{
-        //    UserManager = userManager;
-        //    SignInManager = signInManager;
-        //}
-
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set
-            {
-                _signInManager = value;
-            }
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
+        public ApplicationSignInManager SignInManager{ get { return HttpContext.GetOwinContext().Get<ApplicationSignInManager>(); } }
+        public ApplicationUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); } }
+        public IAuthenticationManager AuthenticationManager { get { return HttpContext.GetOwinContext().Authentication; } }
 
         // GET: User
         [AllowAnonymous]
@@ -126,5 +93,16 @@ namespace ONTO.Controllers
             //        return View(model);
             //}
         }
+
+        // POST: /Account/LogOff
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
