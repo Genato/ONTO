@@ -10,7 +10,7 @@ namespace ONTO.Models.DbContexts
     public class IdentityUserDbContext : IdentityDbContext<ApplicationIdentityUser>
     {
         public IdentityUserDbContext()
-            : base("PostgreIdentityConnection", throwIfV1Schema: false)
+            : base("PostgreONTOIdentityConnection", throwIfV1Schema: false)
         {
         }
 
