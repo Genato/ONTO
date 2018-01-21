@@ -17,7 +17,10 @@ namespace ONTO.Identity
     /// </summary>
     public class ApplicationUserManager : UserManager<OntoIdentityUser>
     {
-        public ApplicationUserManager(IUserStore<OntoIdentityUser> store) : base(store) {}
+        public ApplicationUserManager(IUserStore<OntoIdentityUser> store) : base(store)
+        {
+
+        }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
