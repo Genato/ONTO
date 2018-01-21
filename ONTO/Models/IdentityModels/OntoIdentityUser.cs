@@ -10,9 +10,9 @@ using System.Data.Entity;
 
 namespace ONTO.Models
 {
-    public class ApplicationIdentityUser : IdentityUser
+    public class OntoIdentityUser : IdentityUser
     {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationIdentityUser> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<OntoIdentityUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

@@ -35,7 +35,7 @@ namespace ONTO.Controllers
         {
             if (ModelState.IsValid)
             {
-                var _user = new ApplicationIdentityUser { UserName = user.Email, Email = user.Email };
+                var _user = new OntoIdentityUser { UserName = user.Email, Email = user.Email };
                 var result = await UserManager.CreateAsync(_user, user.Password);
 
                 if (result.Succeeded)
@@ -77,21 +77,19 @@ namespace ONTO.Controllers
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
 
-            return RedirectToAction("Index", "Home");
-
-            //switch (result)
-            //{
-            //    case SignInStatus.Success:
-            //        return RedirectToLocal(returnUrl);
-            //    case SignInStatus.LockedOut:
-            //        return View("Lockout");
-            //    case SignInStatus.RequiresVerification:
-            //        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-            //    case SignInStatus.Failure:
-            //    default:
-            //        ModelState.AddModelError("", "Invalid login attempt.");
-            //        return View(model);
-            //}
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToAction("Index", "Home");
+                //case SignInStatus.LockedOut:
+                //    return View("Lockout");
+                //case SignInStatus.RequiresVerification:
+                //    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
+            }
         }
 
         // POST: /Account/LogOff

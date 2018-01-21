@@ -12,14 +12,14 @@ using System.Web;
 namespace ONTO.Identity
 {
     // Configure the application sign-in manager which is used in this application.
-    public class ApplicationSignInManager : SignInManager<ApplicationIdentityUser, string>
+    public class ApplicationSignInManager : SignInManager<OntoIdentityUser, string>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationIdentityUser user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(OntoIdentityUser user)
         {
             return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
         }

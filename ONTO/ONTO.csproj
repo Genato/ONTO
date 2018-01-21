@@ -199,7 +199,7 @@
     </Compile>
     <Compile Include="Migrations\ONTOMigrations\Configuration.cs" />
     <Compile Include="Models\DbContexts\IdentityUserDbContext.cs" />
-    <Compile Include="Models\IdentityModels\ApplicationIdentityUser.cs" />
+    <Compile Include="Models\IdentityModels\OntoIdentityUser.cs" />
     <Compile Include="Models\ONTOModels\KatalogKljučnihBrojevaOtpada.cs" />
     <Compile Include="Models\DbContexts\OntoDbContext.cs" />
     <Compile Include="Models\ONTOModels\PrateciList.cs" />

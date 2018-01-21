@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ONTO.Models.DbContexts
 {
-    public class IdentityUserDbContext : IdentityDbContext<ApplicationIdentityUser>
+    public class IdentityUserDbContext : IdentityDbContext<OntoIdentityUser>
     {
         public IdentityUserDbContext()
             : base("PostgreONTOIdentityConnection", throwIfV1Schema: false)
@@ -26,7 +26,7 @@ namespace ONTO.Models.DbContexts
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<IdentityUser>().ToTable("Users").Property(p => p.Id).HasColumnName("UserId");
-            modelBuilder.Entity<ApplicationIdentityUser>().ToTable("Users").Property(p => p.Id).HasColumnName("UserId");
+            modelBuilder.Entity<OntoIdentityUser>().ToTable("Users").Property(p => p.Id).HasColumnName("UserId");
             modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
