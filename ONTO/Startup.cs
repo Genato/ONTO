@@ -12,6 +12,7 @@ namespace ONTO
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            ConfigureDependencyInjection();
         }
     }
 }

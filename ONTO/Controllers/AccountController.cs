@@ -16,9 +16,12 @@ namespace ONTO.Controllers
 {
     public class AccountController : Controller
     {
-        public ApplicationSignInManager SignInManager{ get { return HttpContext.GetOwinContext().Get<ApplicationSignInManager>(); } }
-        public ApplicationUserManager UserManager { get { return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); } }
-        public IAuthenticationManager AuthenticationManager { get { return HttpContext.GetOwinContext().Authentication; } }
+        public AccountController(ApplicationSignInManager signInManager, ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
+        {
+            _signInManager = signInManager;
+            _userManager = userManager;
+            _authenticationManager = authenticationManager;
+        }
 
         // GET: User
         [AllowAnonymous]
@@ -36,11 +39,11 @@ namespace ONTO.Controllers
             if (ModelState.IsValid)
             {
                 var _user = new OntoIdentityUser { UserName = user.Email, Email = user.Email };
-                var result = await UserManager.CreateAsync(_user, user.Password);
+                var result = await _userManager.CreateAsync(_user, user.Password);
 
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(_user, isPersistent: false, rememberBrowser: false);
+                    await _signInManager.SignInAsync(_user, isPersistent: false, rememberBrowser: false);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -75,7 +78,7 @@ namespace ONTO.Controllers
             
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
 
             switch (result)
             {
@@ -97,10 +100,14 @@ namespace ONTO.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 
             return RedirectToAction("Index", "Home");
         }
 
+        ///Private members section
+        private ApplicationSignInManager _signInManager { get; set; }
+        private ApplicationUserManager _userManager { get; set; }
+        private IAuthenticationManager _authenticationManager { get; set; }
     }
 }
