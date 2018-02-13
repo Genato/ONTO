@@ -105,6 +105,11 @@ namespace ONTO.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public new ActionResult Profile()
+        {
+            return View();
+        }
+
         ///Private members section
         private ApplicationSignInManager _signInManager { get; set; }
         private ApplicationUserManager _userManager { get; set; }
