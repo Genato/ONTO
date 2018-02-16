@@ -5,7 +5,7 @@ namespace ONTO.Migrations.IdentityMigrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ONTO.Models.DbContexts.IdentityUserDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ONTO.DbContexts.IdentityUserDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace ONTO.Migrations.IdentityMigrations
             MigrationsDirectory = @"Migrations\IdentityMigrations";
         }
 
-        protected override void Seed(ONTO.Models.DbContexts.IdentityUserDbContext context)
+        protected override void Seed(ONTO.DbContexts.IdentityUserDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

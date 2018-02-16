@@ -1,7 +1,15 @@
-﻿
-@{
-    ViewBag.Title = "Profile";
-}
+﻿@using ONTO.Localization
+@model ONTO.ViewModels.AccountViewModels.ProfileViewModel
+
 
 <h2>Profile</h2>
 
+@using (Html.BeginForm("Profile", "Account", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(m => m.Localization)
+        @Html.DropDownListFor(m => m.SelectedLocale, new SelectList(Model.Localization, "ID", "_Localization", Model.SelectedLocale))
+    </div>
+
+    <input type="submit" value=@Messages.SaveButtonLabel>
+}

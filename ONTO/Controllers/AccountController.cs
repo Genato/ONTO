@@ -2,8 +2,10 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ONTO.BusinessLogic;
+using ONTO.DbContexts;
 using ONTO.Identity;
 using ONTO.Models;
+using ONTO.Models.ONTOModels;
 using ONTO.ViewModels.AccountViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,11 +18,13 @@ namespace ONTO.Controllers
 {
     public class AccountController : Controller
     {
-        public AccountController(ApplicationSignInManager signInManager, ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
+        public AccountController(ApplicationSignInManager signInManager, ApplicationUserManager userManager, IAuthenticationManager authenticationManager, UserSettingsLogic userSettingsLogic, LocaleLogic localeLogic)
         {
-            _signInManager = signInManager;
-            _userManager = userManager;
-            _authenticationManager = authenticationManager;
+            _SignInManager = signInManager;
+            _UserManager = userManager;
+            _AuthenticationManager = authenticationManager;
+            _UserSettingsLogic = userSettingsLogic;
+            _LocaleLogic = localeLogic;
         }
 
         // GET: User
@@ -39,17 +43,19 @@ namespace ONTO.Controllers
             if (ModelState.IsValid)
             {
                 var _user = new OntoIdentityUser { UserName = user.Email, Email = user.Email };
-                var result = await _userManager.CreateAsync(_user, user.Password);
+                var result = await _UserManager.CreateAsync(_user, user.Password);
 
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(_user, isPersistent: false, rememberBrowser: false);
+                    await _SignInManager.SignInAsync(_user, isPersistent: false, rememberBrowser: false);
+
+                    OntoIdentityUser ontoUser = _UserManager.Find(user.Email, user.Password);
+                    _LocaleLogic.SetLocalizationForCurrentUser(ontoUser.Id);
 
                     return RedirectToAction("Index", "Home");
                 }
 
-                Helpers businessLogic = new Helpers();
-                businessLogic.AddErrors(ModelState, result);
+                _UserSettingsLogic.AddErrors(ModelState, result);
             }
 
             // If we got this far, something failed, redisplay form
@@ -76,23 +82,19 @@ namespace ONTO.Controllers
                 return View(model);
             }
             
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await _SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
 
-            switch (result)
+            if(result == SignInStatus.Failure)
             {
-                case SignInStatus.Success:
-                    return RedirectToAction("Index", "Home");
-                //case SignInStatus.LockedOut:
-                //    return View("Lockout");
-                //case SignInStatus.RequiresVerification:
-                //    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
             }
+
+            // Successfully logged in
+            OntoIdentityUser ontoUser = _UserManager.Find(model.Email, model.Password);
+            _LocaleLogic.SetLocalizationForCurrentUser(ontoUser.Id);
+
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: /Account/LogOff
@@ -100,19 +102,51 @@ namespace ONTO.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            _AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
         public new ActionResult Profile()
         {
-            return View();
+            ProfileViewModel profileViewModel = new ProfileViewModel()
+            {
+                Localization = _LocaleLogic.GetLocalizations()
+            };
+
+            return View(profileViewModel);
+        }
+
+        [HttpPost]
+        public new ActionResult Profile(ProfileViewModel profileViewModel)
+        {
+            //TODO
+            //Save selected localization to DB to table UserSettings
+            UserSettings userSettings = new UserSettings()
+            {
+                LocalizationID = profileViewModel.SelectedLocale,
+                UserID = User.Identity.GetUserId()
+            };
+
+            _UserSettingsLogic.SaveUserSettings(userSettings);
+
+            profileViewModel.Localization = _LocaleLogic.GetLocalizations();
+
+            return View(profileViewModel);
         }
 
         ///Private members section
-        private ApplicationSignInManager _signInManager { get; set; }
-        private ApplicationUserManager _userManager { get; set; }
-        private IAuthenticationManager _authenticationManager { get; set; }
+        private ApplicationSignInManager _SignInManager { get; set; }
+        private ApplicationUserManager _UserManager { get; set; }
+        private IAuthenticationManager _AuthenticationManager { get; set; }
+        private UserSettingsLogic _UserSettingsLogic { get; set; }
+        private LocaleLogic _LocaleLogic { get; set; }
+
+        //Overriden methods
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            base.OnException(filterContext);
+        }
     }
 }

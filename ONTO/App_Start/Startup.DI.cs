@@ -1,13 +1,16 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Owin;
+using ONTO.BusinessLogic;
 using ONTO.Identity;
-using ONTO.Models.DbContexts;
+using ONTO.DbContexts;
+using ONTO.Models.ONTOModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ONTO.DAL;
 
 namespace ONTO
 {
@@ -52,9 +55,20 @@ namespace ONTO
             //// Maps the role store role to the implemented type
             //services.AddTransient<IRoleStore<IdentityRole, string>, RoleStore<IdentityRole>>();
             //services.AddTransient(typeof(ApplicationRoleManager));
-
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
             /// Add Identity to DI(Dependency Injection) - End
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /// Add ONTO to DI - Start
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////
+            services.AddTransient(typeof(OntoDbContext));
+            services.AddTransient(typeof(UserSettingsDAL));
+            services.AddTransient(typeof(LocaleDAL));
+            services.AddTransient(typeof(UserSettingsLogic));
+            services.AddTransient(typeof(LocaleLogic));
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////
+            /// Add ONTO to DI - Start - End
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             // Add Controllers to DI(Dependency Injection)

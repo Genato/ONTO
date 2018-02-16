@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using ONTO.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace ONTO.Models.DbContexts
+namespace ONTO.DbContexts
 {
     public class IdentityUserDbContext : IdentityDbContext<OntoIdentityUser>
     {

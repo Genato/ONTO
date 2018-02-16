@@ -4,7 +4,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using ONTO.Identity;
 using ONTO.Models;
-using ONTO.Models.DbContexts;
+using ONTO.DbContexts;
 using Owin;
 using System;
 using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace ONTO
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/{lang}/Account/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.

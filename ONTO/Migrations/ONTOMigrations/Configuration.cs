@@ -5,7 +5,7 @@ namespace ONTO.Migrations.ONTOMigrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ONTO.Models.ONTOModels.OntoDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ONTO.DbContexts.OntoDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace ONTO.Migrations.ONTOMigrations
             MigrationsDirectory = @"Migrations\ONTOMigrations";
         }
 
-        protected override void Seed(ONTO.Models.ONTOModels.OntoDbContext context)
+        protected override void Seed(ONTO.DbContexts.OntoDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
