@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ONTO.Localization;
+using ONTO.Models.ONTOModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,5 +27,9 @@ namespace ONTO.ViewModels.AccountViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        [Display(Name = nameof(Messages.LocalizationLabel), ResourceType = typeof(Messages))]
+        public List<Locale> Localization { get; set; }
+
+        public int SelectedLocale { get; set; }
     }
 }

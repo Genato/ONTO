@@ -24,7 +24,23 @@ namespace ONTO.BusinessLogic
         {
             foreach (var error in result.Errors)
             {
-                modelState.AddModelError("error", error);
+                modelState.AddModelError("IdentityErrors", error);
+            }
+        }
+
+        /// <summary>
+        /// Add errors to modelstate from modelStatw. ModelState can be passed to ERROR view.
+        /// </summary>
+        /// <param name="modelState"></param>
+        /// <param name="result"></param>
+        public void AddErrors(ModelStateDictionary modelState)
+        {
+            foreach (var error in modelState)
+            {
+                foreach (var item in error.Value.Errors)
+                {
+                    modelState.AddModelError("ModelError", item.ErrorMessage);
+                }
             }
         }
     }

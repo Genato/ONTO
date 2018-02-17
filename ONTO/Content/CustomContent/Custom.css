@@ -1,0 +1,22 @@
+﻿footer{
+    position: absolute;
+    bottom: 5%;
+    width: 80%;
+}
+
+.profile-form {
+    position: relative;
+    width: 55%;
+    border-right: 1px solid #dcd3d3;
+    float: left;
+    margin: 1%;
+    right: -1%;
+}
+
+.change-password {
+    position: relative;
+    margin: 2%;
+    left: 1%;
+    float: left;
+    width: 35%;
+}

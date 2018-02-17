@@ -8,14 +8,8 @@
 </head>
 <body>
     <hgroup>
-        @if (Model["error"].Errors.Count > 1)
-        {
-            <h1 class="text-danger">Errors.</h1>
-        }
-        else
-        {
-            <h1 class="text-danger">Error.</h1>
-        }
+
+        <h1 class="text-danger">Error.</h1>
 
         @foreach (var item in Model)
         {

@@ -12,6 +12,15 @@ namespace ONTO.ViewModels.AccountViewModels
     public class ProfileViewModel
     {
         [Required]
+        [EmailAddress]
+        [Display(Name = "Current Email")]
+        public string CurrentEmail { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "New Email")]
+        public string NewEmail { get; set; }
+
         [Display(Name = nameof(Messages.LocalizationLabel), ResourceType = typeof(Messages))]
         public List<Locale> Localization { get; set; }
 

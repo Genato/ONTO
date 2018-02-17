@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -22,7 +23,7 @@ namespace ONTO
                     controller = "Home",
                     action = "Index",
                     id = UrlParameter.Optional,
-                    lang = "en"
+                    lang = ConfigurationManager.AppSettings["DEFAULT_LANGUAGE"]
                 });
 
             routes.MapRoute(

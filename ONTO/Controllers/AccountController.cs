@@ -31,10 +31,21 @@ namespace ONTO.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            RegisterViewModel registerViewModel = new RegisterViewModel()
+            {
+                Localization = _LocaleLogic.GetLocalizations()
+            };
+
+            return View(registerViewModel);
         }
 
-        // POST: /Account/Register
+        /// <summary>
+        /// POST: /Account/Register <para/>
+        /// Action register new user to {schema}.{table} => {identity}.{Users} and UserSettings to {onto}.{User_Settings}. <para/>
+        /// It also sets localization for currently created and loged in user.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
@@ -49,7 +60,9 @@ namespace ONTO.Controllers
                 {
                     await _SignInManager.SignInAsync(_user, isPersistent: false, rememberBrowser: false);
 
+                    //Create UserSettings and set localization for him
                     OntoIdentityUser ontoUser = _UserManager.Find(user.Email, user.Password);
+                    _UserSettingsLogic.CreateUserSettings(user, ontoUser.Id);
                     _LocaleLogic.SetLocalizationForCurrentUser(ontoUser.Id);
 
                     return RedirectToAction("Index", "Home");
@@ -59,7 +72,7 @@ namespace ONTO.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View("ERROR", ModelState);
+            return View("Error", ModelState);
         }
 
         // GET: /Account/Login
@@ -70,8 +83,13 @@ namespace ONTO.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Login
+        /// <summary>
+        /// POST: /Account/Login <para/>
+        /// Action login user and sets localization for it.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -110,19 +128,33 @@ namespace ONTO.Controllers
         [HttpGet]
         public new ActionResult Profile()
         {
+            OntoIdentityUser ontoUser = _UserManager.FindById(User.Identity.GetUserId());
+
             ProfileViewModel profileViewModel = new ProfileViewModel()
             {
-                Localization = _LocaleLogic.GetLocalizations()
+                Localization = _LocaleLogic.GetLocalizations(),
+                CurrentEmail = ontoUser.Email,
+                SelectedLocale = _UserSettingsLogic.GetByUserID(ontoUser.Id).LocalizationID
             };
 
             return View(profileViewModel);
         }
 
         [HttpPost]
-        public new ActionResult Profile(ProfileViewModel profileViewModel)
+        [ValidateAntiForgeryToken]
+        public async new Task<ActionResult> Profile(ProfileViewModel profileViewModel)
         {
-            //TODO
-            //Save selected localization to DB to table UserSettings
+            if (ModelState.IsValid == false)
+            {
+                profileViewModel.Localization = _LocaleLogic.GetLocalizations();
+                return View(profileViewModel);
+            }
+
+            IdentityResult identityResult = await _UserManager.UpdateUser(profileViewModel);
+
+            if (identityResult.Succeeded == false)
+                _UserSettingsLogic.AddErrors(ModelState, identityResult);
+
             UserSettings userSettings = new UserSettings()
             {
                 LocalizationID = profileViewModel.SelectedLocale,
@@ -130,10 +162,32 @@ namespace ONTO.Controllers
             };
 
             _UserSettingsLogic.SaveUserSettings(userSettings);
+            _LocaleLogic.SetLocalizationForCurrentUser(User.Identity.GetUserId());
 
             profileViewModel.Localization = _LocaleLogic.GetLocalizations();
 
-            return View(profileViewModel);
+            return RedirectToAction("Profile");
+        }
+
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangePassword(ChangePasswordViewModel changePasswordViewModel)
+        {
+            if(ModelState.IsValid == false)
+                return View("Error", ModelState);
+
+            IdentityResult identityResult = await _UserManager.UpdateUserPassword(changePasswordViewModel);
+
+            if (identityResult.Succeeded == false)
+                _UserSettingsLogic.AddErrors(ModelState, identityResult);
+
+            return View();
         }
 
         ///Private members section

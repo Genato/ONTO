@@ -28,6 +28,11 @@ namespace ONTO.DAL
             return _UserSettings;
         }
 
+        public void CreateUserSettings(UserSettings userSettings)
+        {
+            _ontoDbContext.UserSettings.Add(userSettings);
+        }
+
         //////////////////////
         // Overriden members//
         //////////////////////

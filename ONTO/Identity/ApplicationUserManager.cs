@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using static ONTO.Models.OntoIdentityUser;
+using ONTO.ViewModels.AccountViewModels;
+using System.Threading.Tasks;
 
 namespace ONTO.Identity
 {
@@ -20,6 +22,30 @@ namespace ONTO.Identity
         public ApplicationUserManager(IUserStore<OntoIdentityUser> store) : base(store)
         {
 
+        }
+
+        /// <summary>
+        /// Method updates all user properties (It doesn't update password !)
+        /// </summary>
+        /// <param name="profileViewModel"></param>
+        public async Task<IdentityResult> UpdateUser(ProfileViewModel profileViewModel)
+        {
+            OntoIdentityUser ontoIdentityUser = this.FindById(HttpContext.Current.User.Identity.GetUserId());
+            ontoIdentityUser.Email = profileViewModel.NewEmail;
+            ontoIdentityUser.UserName = profileViewModel.NewEmail;
+
+            IdentityResult result = await this.UpdateAsync(ontoIdentityUser);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Method only updates user password
+        /// </summary>
+        /// <param name="changePasswordViewModel"></param>
+        public async Task<IdentityResult> UpdateUserPassword(ChangePasswordViewModel changePasswordViewModel)
+        {            
+            return await this.ChangePasswordAsync(HttpContext.Current.User.Identity.GetUserId(), changePasswordViewModel.CurrentPassword, changePasswordViewModel.NewPassword);
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)

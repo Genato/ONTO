@@ -242,3 +242,4 @@ ModelManifest.xml
 .fake/
 *.docx
 /WebEssentials2015-Settings.json
+/DATABASE_HELPER/
