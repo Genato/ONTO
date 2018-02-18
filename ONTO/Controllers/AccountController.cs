@@ -62,7 +62,14 @@ namespace ONTO.Controllers
 
                     //Create UserSettings and set localization for him
                     OntoIdentityUser ontoUser = _UserManager.Find(user.Email, user.Password);
-                    _UserSettingsLogic.CreateUserSettings(user, ontoUser.Id);
+
+                    UserSettings userSettings = new UserSettings()
+                    {
+                        UserID = ontoUser.Id,
+                        LocalizationID = user.SelectedLocale
+                    };
+
+                    _UserSettingsLogic.CreateEntity(userSettings);
                     _LocaleLogic.SetLocalizationForCurrentUser(ontoUser.Id);
 
                     return RedirectToAction("Index", "Home");
@@ -72,7 +79,9 @@ namespace ONTO.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View("Error", ModelState);
+            user.Localization = _LocaleLogic.GetLocalizations();
+
+            return View(user);
         }
 
         // GET: /Account/Login
@@ -140,6 +149,11 @@ namespace ONTO.Controllers
             return View(profileViewModel);
         }
 
+        /// <summary>
+        /// Save UserSettings changes to {onto}.{User_Settings} table and OntoIdenityUser changes to {identity}.{Users} table.
+        /// </summary>
+        /// <param name="profileViewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async new Task<ActionResult> Profile(ProfileViewModel profileViewModel)
@@ -198,6 +212,11 @@ namespace ONTO.Controllers
         private LocaleLogic _LocaleLogic { get; set; }
 
         //Overriden methods
+
+        /// <summary>
+        /// Exception handling.
+        /// </summary>
+        /// <param name="filterContext"></param>
         protected override void OnException(ExceptionContext filterContext)
         {
             base.OnException(filterContext);

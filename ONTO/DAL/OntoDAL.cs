@@ -19,6 +19,11 @@ namespace ONTO.DAL
 
         // Public methods - (not abstract and virtual) //
 
+        /// <summary>
+        /// Get all rows of T entity from database.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public List<T> GetAll<T>() where T : class => _ontoDbContext.Set<T>().ToList();
 
         /// <summary>
@@ -35,7 +40,15 @@ namespace ONTO.DAL
 
         // Abstract methods//
 
+        /// <summary>
+        /// Get entity by ID
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public abstract T GetByID<T>(int id) where T : class;
+
+        public abstract void CreateEntity<T>(T entity) where T : class;
 
         // Virtual methods (override if you wish) //
         //Some of the DB entities don't have some of the columns, 

@@ -37,11 +37,27 @@ namespace ONTO.DAL
         // Overriden members//
         //////////////////////
 
+        /// <summary>
+        /// Get UserSettings by ID
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public override T GetByID<T>(int id)
         {
             UserSettings userSettings = _ontoDbContext.UserSettings.Find(id);
 
             return (T)Convert.ChangeType(userSettings, typeof(UserSettings));
+        }
+
+        /// <summary>
+        /// Add UserSettings to DbSet. (Call DbSet.SaveChanges() to insert it into database)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        public override void CreateEntity<T>(T entity)
+        {
+            _ontoDbContext.UserSettings.Add((UserSettings)Convert.ChangeType(entity, typeof(UserSettings)));
         }
 
         //Private members

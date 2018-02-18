@@ -40,21 +40,35 @@ namespace ONTO.BusinessLogic
             return _userSettingsDAL.UpdateDatabase();
         }
 
-        /// <summary>
-        /// Create USerSettings from RegisterViewModel and link it to user with second parameter "userID"
-        /// </summary>
-        /// <param name="user"></param>
-        /// <param name="userID"></param>
-        /// <returns></returns>
-        public int CreateUserSettings(RegisterViewModel user, string userID)
-        {
-            UserSettings userSettings = new UserSettings()
-            {
-                LocalizationID = user.SelectedLocale,
-                UserID = userID
-            };
+        // Overriden methods //
 
-            _userSettingsDAL.CreateUserSettings(userSettings);
+        /// <summary>
+        /// Create UserSettings.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public override int CreateEntity<T>(T entity)
+        {
+            UserSettings userSettings = (UserSettings)Convert.ChangeType(entity, typeof(UserSettings));
+
+            _userSettingsDAL.CreateEntity(userSettings);
+
+            return _userSettingsDAL.UpdateDatabase();
+        }
+
+        /// <summary>
+        /// Save UserSettings changes.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public override int SaveEntity<T>(T entity)
+        {
+            UserSettings tmpUserSettings = (UserSettings)Convert.ChangeType(entity, typeof(UserSettings));
+
+            UserSettings newuserSettings = _userSettingsDAL.GetByUserID(tmpUserSettings.UserID);
+            newuserSettings.LocalizationID = tmpUserSettings.LocalizationID;
 
             return _userSettingsDAL.UpdateDatabase();
         }

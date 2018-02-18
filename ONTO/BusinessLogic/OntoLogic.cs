@@ -13,7 +13,7 @@ namespace ONTO.BusinessLogic
     public abstract class OntoLogic
     {
 
-        // Public members
+        // Public methods //
 
         /// <summary>
         /// Add errors to modelstate from IdentityResults. ModelState can be passed to ERROR view.
@@ -43,5 +43,11 @@ namespace ONTO.BusinessLogic
                 }
             }
         }
+
+        // Abstract methods //
+
+        public abstract int CreateEntity<T>(T entity) where T : class;
+
+        public abstract int SaveEntity<T>(T entity) where T : class;
     }
 }

@@ -19,11 +19,5 @@ namespace ONTO.ViewModels.AccountViewModels
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
         public string NewPassword { get; set; }
-
-        //[Required]
-        //[DataType(DataType.Password)]
-        //[Display(Name = "Confirm password")]
-        //[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        //public string ConfirmPassword { get; set; }
     }
 }
