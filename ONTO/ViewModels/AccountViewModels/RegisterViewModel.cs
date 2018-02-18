@@ -27,7 +27,7 @@ namespace ONTO.ViewModels.AccountViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = nameof(Messages.LocalizationLabel), ResourceType = typeof(Messages))]
+        [Display(Name = nameof(Labels.LocalizationLabel), ResourceType = typeof(Labels))]
         public List<Locale> Localization { get; set; }
 
         public int SelectedLocale { get; set; }

@@ -20,7 +20,7 @@ namespace ONTO.ViewModels.AccountViewModels
         [Display(Name = "New Email")]
         public string NewEmail { get; set; }
 
-        [Display(Name = nameof(Messages.LocalizationLabel), ResourceType = typeof(Messages))]
+        [Display(Name = nameof(Labels.LocalizationLabel), ResourceType = typeof(Labels))]
         public List<Locale> Localization { get; set; }
 
         public int SelectedLocale { get; set; }

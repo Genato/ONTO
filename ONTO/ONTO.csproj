@@ -202,17 +202,37 @@
     </Compile>
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
-    <Compile Include="Localization\Messages.Designer.cs">
+    <Compile Include="Localization\ErrorMsg.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Messages.resx</DependentUpon>
+      <DependentUpon>ErrorMsg.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization\Messages.hr.Designer.cs">
+    <Compile Include="Localization\ErrorMsg.hr.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Messages.hr.resx</DependentUpon>
+      <DependentUpon>ErrorMsg.hr.resx</DependentUpon>
     </Compile>
     <Compile Include="Localization\Extensions\LocalizationAttribute.cs" />
+    <Compile Include="Localization\Labels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Labels.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\Labels.hr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Labels.hr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\SuccessMsg.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuccessMsg.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\SuccessMsg.hr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuccessMsg.hr.resx</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\IdentityMigrations\201801071919078_InitialCreate.cs" />
     <Compile Include="Migrations\IdentityMigrations\201801071919078_InitialCreate.Designer.cs">
       <DependentUpon>201801071919078_InitialCreate.cs</DependentUpon>
@@ -276,10 +296,22 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EmbeddedResource Include="Localization\Messages.hr.resx">
+    <EmbeddedResource Include="Localization\ErrorMsg.hr.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Messages.hr.Designer.cs</LastGenOutput>
+      <LastGenOutput>ErrorMsg.hr.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Labels.hr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Labels.hr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\Labels.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Labels.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\SuccessMsg.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SuccessMsg.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ONTOMigrations\201802141423534_Added_UserProfileSettings_model.resx">
       <DependentUpon>201802141423534_Added_UserProfileSettings_model.cs</DependentUpon>
@@ -298,6 +330,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ONTOMigrations\201802161145316_Changed_Name_Of_UserSettings_ModelTable.resx">
       <DependentUpon>201802161145316_Changed_Name_Of_UserSettings_ModelTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\SuccessMsg.hr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SuccessMsg.hr.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\CustomScripts\custom_jquery.js" />
@@ -349,9 +386,9 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Messages.resx">
+    <EmbeddedResource Include="Localization\ErrorMsg.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+      <LastGenOutput>ErrorMsg.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\IdentityMigrations\201801071919078_InitialCreate.resx">
       <DependentUpon>201801071919078_InitialCreate.cs</DependentUpon>

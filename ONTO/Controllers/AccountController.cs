@@ -4,6 +4,7 @@ using Microsoft.Owin.Security;
 using ONTO.BusinessLogic;
 using ONTO.DbContexts;
 using ONTO.Identity;
+using ONTO.Localization;
 using ONTO.Models;
 using ONTO.Models.ONTOModels;
 using ONTO.ViewModels.AccountViewModels;
@@ -104,7 +105,7 @@ namespace ONTO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid == false)
             {
                 return View(model);
             }
@@ -113,7 +114,7 @@ namespace ONTO.Controllers
 
             if(result == SignInStatus.Failure)
             {
-                ModelState.AddModelError("", "Invalid login attempt.");
+                ModelState.AddModelError("", ErrorMsg.InvaliLoginAttempt);
                 return View(model);
             }
 
@@ -212,6 +213,13 @@ namespace ONTO.Controllers
         private LocaleLogic _LocaleLogic { get; set; }
 
         //Overriden methods
+
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            ModelStateDictionary modelstate = ModelState;
+
+            base.OnActionExecuted(filterContext);
+        }
 
         /// <summary>
         /// Exception handling.
