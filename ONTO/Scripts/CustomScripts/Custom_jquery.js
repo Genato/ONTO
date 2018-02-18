@@ -1,3 +1,7 @@
-﻿$('.close').on('click', function() {
-    $(this).parent('#notification').hide();
+﻿$(document).ready(function () {
+
+    $(".close").click(function () {
+        $("#notification").slideUp("slow");
+    });
+
 });

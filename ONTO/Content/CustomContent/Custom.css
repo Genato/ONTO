@@ -53,8 +53,10 @@ footer{
 }
 
 #notification {
-    background-color: #b0edba;
+    background-color: rgba(92, 184, 92, 0.82);
     color: #000000;
+    margin-bottom: 0px;
+    /*display: none;*/
 }
 
 #notification span {
@@ -65,4 +67,8 @@ footer{
 
 #notification button {
     font-size: 30px; 
+}
+
+#slide_down {
+    display: block;
 }
