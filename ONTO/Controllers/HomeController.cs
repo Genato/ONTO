@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ONTO.SignalR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,9 @@ namespace ONTO.Controllers
 
         public ActionResult About()
         {
+            OntoHub hub = new OntoHub();
+            hub.ShowNotificationBar();
+
             ViewBag.Message = "Your application description page.";
 
             return View();

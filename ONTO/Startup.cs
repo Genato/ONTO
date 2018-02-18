@@ -13,6 +13,7 @@ namespace ONTO
         {
             ConfigureAuth(app);
             ConfigureDependencyInjection();
+            app.MapSignalR();
         }
     }
 }
