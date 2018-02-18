@@ -31,8 +31,8 @@ namespace ONTO.Identity
         public async Task<IdentityResult> UpdateUser(ProfileViewModel profileViewModel)
         {
             OntoIdentityUser ontoIdentityUser = this.FindById(HttpContext.Current.User.Identity.GetUserId());
-            ontoIdentityUser.Email = profileViewModel.NewEmail;
-            ontoIdentityUser.UserName = profileViewModel.NewEmail;
+            ontoIdentityUser.Email = profileViewModel.NewEmail == null ? profileViewModel.CurrentEmail : profileViewModel.NewEmail;
+            ontoIdentityUser.UserName = profileViewModel.NewEmail == null ? profileViewModel.CurrentEmail : profileViewModel.NewEmail;
 
             IdentityResult result = await this.UpdateAsync(ontoIdentityUser);
 

@@ -4,7 +4,7 @@
 
 <h2>Profile</h2>
 
-@using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal profile-form", role = "form" }))
+@using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal profile-form-right-border", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary("", new { @class = "text-danger" })

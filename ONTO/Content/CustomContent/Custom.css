@@ -1,16 +1,11 @@
-﻿footer{
+﻿body{
+    background-color: #f5f9fa;
+}
+
+footer{
     position: absolute;
     bottom: 5%;
     width: 80%;
-}
-
-.profile-form {
-    position: relative;
-    width: 55%;
-    border-right: 1px solid #dcd3d3;
-    float: left;
-    margin: 1%;
-    right: -1%;
 }
 
 .change-password {
@@ -19,4 +14,55 @@
     left: 1%;
     float: left;
     width: 35%;
+}
+
+.dropdown-menu li a {
+    color: whitesmoke;
+    padding: 10%;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #69b1f7;
+    border-radius: 2px;
+}
+
+/****************************************************************************************/
+/****** Classes that decorate HTML tags that are allready decorated with BOOTSTRAP ******/
+/****************************************************************************************/
+
+.dropdown-menu-extension {
+    display: none;
+    position: absolute;
+    background-color: #070f3d;
+    color: whitesmoke;
+    top: 50px;
+    border-radius: 2px;
+}
+
+.profile-form-right-border {
+    position: relative;
+    width: 55%;
+    border-right: 1px solid #dcd3d3;
+    float: left;
+    margin: 1%;
+    right: -1%;
+}
+
+.top-navabar-extension{
+    background-color: #070f3d;
+}
+
+#notification {
+    background-color: #b0edba;
+    color: #000000;
+}
+
+#notification span {
+    position: relative;
+    left: 43%;
+    font-size: 20px; 
+}
+
+#notification button {
+    font-size: 30px; 
 }

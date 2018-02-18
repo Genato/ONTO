@@ -10,7 +10,13 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+    <div id="notification" class="alert alert-success">
+        <span> is an important alert! </span>
+        <button class="close">&times;</button>
+    </div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top top-navabar-extension">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -18,14 +24,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="dropdown dropdwon-extensiom">
+                    @Html.ActionLink("Onto", "Index", "Home", new { area = "" }, htmlAttributes: new { @data_toggle = "dropdown", @class = "navbar-brand btn dropdown-toggle" })
+                    <ul class="dropdown-menu dropdown-menu-extension">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
 
                 @if (Request.IsAuthenticated)
                 {
@@ -33,12 +41,12 @@
                     {
                         @Html.AntiForgeryToken()
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Profile", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
-                    </li>
-                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Profile", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            </li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                        </ul>
                     }
                 }
                 else
