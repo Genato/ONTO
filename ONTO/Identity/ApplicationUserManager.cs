@@ -28,7 +28,7 @@ namespace ONTO.Identity
         /// Method updates all user properties (It doesn't update password !)
         /// </summary>
         /// <param name="profileViewModel"></param>
-        public async Task<IdentityResult> UpdateUser(ProfileViewModel profileViewModel)
+        public async Task<IdentityResult> UpdateUser(IdentityProfileViewModel profileViewModel)
         {
             OntoIdentityUser ontoIdentityUser = this.FindById(HttpContext.Current.User.Identity.GetUserId());
             ontoIdentityUser.Email = profileViewModel.NewEmail == null ? profileViewModel.CurrentEmail : profileViewModel.NewEmail;

@@ -117,11 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hello</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="IdentityUserSettings" xml:space="preserve">
+    <value>Identity user settings</value>
+  </data>
   <data name="LocalizationLabel" xml:space="preserve">
     <value>Select Language</value>
     <comment>Label for Localization</comment>
   </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>LogOff</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
   <data name="SaveButtonLabel" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="UserApplicationSettings" xml:space="preserve">
+    <value>User application settings</value>
   </data>
 </root>

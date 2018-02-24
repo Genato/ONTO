@@ -12,12 +12,18 @@ footer{
     background-color: #070f3d;
 }
 
+/** Form - "profile-form-right-borde" **/
 .change-password {
     position: relative;
-    margin: 2%;
+    margin: 1%;
     left: 1%;
     float: left;
-    width: 35%;
+    width: 30%;
+    padding: 1%;
+}
+
+.change-password a {
+    margin-top: 9px;
 }
 
 .profile-form-right-border {
@@ -27,10 +33,30 @@ footer{
     float: left;
     margin: 1%;
     right: -1%;
+    padding: 1%;
 }
 
-/*** DropdownMenu ***/
-.dropdown-extensiom .dropdown-toggle {
+.profile-form-right-border div {
+    position: relative;
+}
+
+.profile-form-right-border label {
+    width: 27%;
+    float: left;
+    padding-top: 2%;
+}
+
+.profile-form-right-border input[type=text] {
+    width: 65%;
+}
+
+.profile-form-right-border input[type=submit] {
+    margin-left: 27%;
+}
+/** Form - "profile-form-right-borde" **/
+
+/** DropdownMenu **/
+.house-icon {
     font-size: 20px;
 }
 
@@ -41,27 +67,43 @@ footer{
     border: 1px solid #303d87;
     color: whitesmoke;
     top: 50px;
-    border-radius: 1px;
+    border-radius: 2px;
+}
+
+.dropdown-menu-extension-home {
     left: -1px;
-    min-width: 100px;
+    min-width: 105px;
+}
+
+.navbar-right .dropdown-menu-extension-user {
+    left: 10px;
+    min-width: 40px;
+}
+
+.navbar-right .dropdown-menu-extension-user li a {
+    padding: 5%;
 }
 
 .dropdown-menu-extension li a {
     position: relative;
-}
-
-.dropdown-menu-extension li a {
     color: whitesmoke;
-    padding: 10%;
+    padding: 8%;
+    font-size: 12px;
 }
 
 .dropdown-menu-extension li a:hover {
     background-color: #69b1f7;
     border-radius: 2px;
+    transform: scaleX(1.05);
+    transition: 0.3s;
 }
 
 .dropdown-extensiom:hover .dropdown-menu-extension {
     display: block;
+}
+
+.house-icon:hover {
+    text-shadow: 2px 2px 10px #e5fcf3;
 }
 /*** DropdownMenu ***/
 

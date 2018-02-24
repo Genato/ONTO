@@ -136,52 +136,36 @@ namespace ONTO.Controllers
         }
 
         [HttpGet]
-        public new ActionResult Profile()
+        public ActionResult IdentityProfileSettings()
         {
             OntoIdentityUser ontoUser = _UserManager.FindById(User.Identity.GetUserId());
 
-            ProfileViewModel profileViewModel = new ProfileViewModel()
+            IdentityProfileViewModel profileViewModel = new IdentityProfileViewModel()
             {
-                Localization = _LocaleLogic.GetLocalizations(),
                 CurrentEmail = ontoUser.Email,
-                SelectedLocale = _UserSettingsLogic.GetByUserID(ontoUser.Id).LocalizationID
             };
 
             return View(profileViewModel);
         }
 
         /// <summary>
-        /// Save UserSettings changes to {onto}.{User_Settings} table and OntoIdenityUser changes to {identity}.{Users} table.
+        /// Save OntoIdenityUser changes to {identity}.{Users} table.
         /// </summary>
         /// <param name="profileViewModel"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async new Task<ActionResult> Profile(ProfileViewModel profileViewModel)
+        public async Task<ActionResult> IdentityProfileSettings(IdentityProfileViewModel identityProfileViewModel)
         {
             if (ModelState.IsValid == false)
-            {
-                profileViewModel.Localization = _LocaleLogic.GetLocalizations();
-                return View(profileViewModel);
-            }
+                return View(identityProfileViewModel);
 
-            IdentityResult identityResult = await _UserManager.UpdateUser(profileViewModel);
+            IdentityResult identityResult = await _UserManager.UpdateUser(identityProfileViewModel);
 
             if (identityResult.Succeeded == false)
                 _UserSettingsLogic.AddErrors(ModelState, identityResult);
-
-            UserSettings userSettings = new UserSettings()
-            {
-                LocalizationID = profileViewModel.SelectedLocale,
-                UserID = User.Identity.GetUserId()
-            };
-
-            _UserSettingsLogic.SaveUserSettings(userSettings);
-            _LocaleLogic.SetLocalizationForCurrentUser(User.Identity.GetUserId());
-
-            profileViewModel.Localization = _LocaleLogic.GetLocalizations();
-
-            return RedirectToAction("Profile");
+            
+            return RedirectToAction("IdentityProfileSettings");
         }
 
         [HttpGet]
@@ -205,6 +189,48 @@ namespace ONTO.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult UserAppSettings()
+        {
+            OntoIdentityUser ontoUser = _UserManager.FindById(User.Identity.GetUserId());
+
+            UserAppSettingsViewModel userAppSettings = new UserAppSettingsViewModel()
+            {
+                Localization = _LocaleLogic.GetLocalizations(),
+                SelectedLocale = _UserSettingsLogic.GetByUserID(ontoUser.Id).LocalizationID
+            };
+
+            return View(userAppSettings);
+        }
+
+        /// <summary>
+        /// Save UserSettings changes to {onto}.{User_Settings} table
+        /// </summary>
+        /// <param name="userSettings"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserAppSettings(UserAppSettingsViewModel userAppSettingsViewModel)
+        {
+            if (ModelState.IsValid == false)
+            {
+                userAppSettingsViewModel.Localization = _LocaleLogic.GetLocalizations();
+                return View(userAppSettingsViewModel);
+            }
+
+            UserSettings userSettings = new UserSettings()
+            {
+                LocalizationID = userAppSettingsViewModel.SelectedLocale,
+                UserID = User.Identity.GetUserId()
+            };
+
+            //Save User app settings and set localization for current user
+            _UserSettingsLogic.SaveUserSettings(userSettings);
+            _LocaleLogic.SetLocalizationForCurrentUser(User.Identity.GetUserId());
+
+            return RedirectToAction("UserAppSettings");
+        }
+
         ///Private members section
         private ApplicationSignInManager _SignInManager { get; set; }
         private ApplicationUserManager _UserManager { get; set; }
@@ -216,11 +242,14 @@ namespace ONTO.Controllers
 
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
+            //TODO
+            //Replace identity messages with localized messages
+
             ModelStateDictionary modelstate = ModelState;
 
             base.OnActionExecuted(filterContext);
         }
-
+        
         /// <summary>
         /// Exception handling.
         /// </summary>

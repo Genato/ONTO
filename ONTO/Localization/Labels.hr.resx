@@ -117,11 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>O nama</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Pozdrav</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Početna</value>
+  </data>
+  <data name="IdentityUserSettings" xml:space="preserve">
+    <value>Postavke profila</value>
+  </data>
   <data name="LocalizationLabel" xml:space="preserve">
     <value>Izaberi jezik</value>
     <comment>Label for Localization</comment>
   </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Prijavi se</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Odjavi se</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registriraj</value>
+  </data>
   <data name="SaveButtonLabel" xml:space="preserve">
     <value>Spremi</value>
+  </data>
+  <data name="UserApplicationSettings" xml:space="preserve">
+    <value>Korisničke postavke</value>
   </data>
 </root>

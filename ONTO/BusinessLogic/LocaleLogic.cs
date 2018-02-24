@@ -15,7 +15,7 @@ namespace ONTO.BusinessLogic
         }
 
         /// <summary>
-        /// Set localization for current user, send userID of currently logged in user.
+        /// Set localization for current user.
         /// </summary>
         /// <param name="userID">/param>
         public void SetLocalizationForCurrentUser(string userID)

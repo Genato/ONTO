@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@using ONTO.Localization
 
 <!DOCTYPE html>
 <html>
@@ -24,11 +25,11 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="dropdown dropdown-extensiom">
-                    @Html.ActionLink(HttpUtility.HtmlDecode("&#127962;"), "Index", "Home", new { area = "" }, htmlAttributes: new { @data_toggle = "dropdown", @class = "navbar-brand btn dropdown-toggle" })
-                    <ul class="dropdown-menu dropdown-menu-extension">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @Html.ActionLink(HttpUtility.HtmlDecode("&#127962;"), "Index", "Home", new { area = "" }, htmlAttributes: new { @data_toggle = "dropdown", @class = "navbar-brand btn dropdown-toggle house-icon" })
+                    <ul class="dropdown-menu dropdown-menu-extension dropdown-menu-extension-home">
+                        <li>@Html.ActionLink(Labels.Home, "Index", "Home")</li>
+                        <li>@Html.ActionLink(Labels.About, "About", "Home")</li>
+                        <li>@Html.ActionLink(Labels.Contact, "Contact", "Home")</li>
                     </ul>
                 </div>
             </div>
@@ -41,10 +42,14 @@
                         @Html.AntiForgeryToken()
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Profile", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            <li class="dropdown dropdown-extensiom">
+                                @Html.ActionLink(Labels.Hello + " " + User.Identity.Name + "!", "Profile", "Account", routeValues: null, htmlAttributes: new { @data_toggle = "dropdown", title = "Manage" })
+                                <ul class="dropdown-menu dropdown-menu-extension dropdown-menu-extension-user">
+                                    <li>@Html.ActionLink(Labels.IdentityUserSettings, "IdentityProfileSettings", "Account")</li>
+                                    <li>@Html.ActionLink(Labels.UserApplicationSettings, "UserAppSettings", "Account")</li>
+                                </ul>
                             </li>
-                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">@Labels.LogOff</a></li>
                         </ul>
                     }
                 }

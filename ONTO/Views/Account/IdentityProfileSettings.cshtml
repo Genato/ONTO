@@ -1,0 +1,33 @@
+﻿@using ONTO.Localization
+@model ONTO.ViewModels.AccountViewModels.IdentityProfileViewModel
+
+
+<h2>Profile</h2>
+
+@using (Html.BeginForm("IdentityProfileSettings", "Account", FormMethod.Post, new { @class = "form-horizontal profile-form-right-border", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CurrentEmail)
+            @Html.TextBoxFor(m => m.CurrentEmail, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.NewEmail)
+        <div >
+            @Html.TextBoxFor(m => m.NewEmail, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <input type="submit" class="btn btn-success" value=@Labels.SaveButtonLabel />
+        </div>
+    </div>
+
+}
+
+<div class="change-password">
+    @Html.ActionLink("Change Password", "ChangePassword", null, new { @class = "btn btn-primary" })
+</div>
