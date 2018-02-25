@@ -62,5 +62,8 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
+####################################################################################################################
+# Changed linguistic because git shows project as javascript due to large numbers of JS scripts(project is .NET CS)#
+####################################################################################################################
 * linguist-vendored
 *.cs linguist-vendored=false
