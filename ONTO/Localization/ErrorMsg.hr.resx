@@ -123,4 +123,7 @@
   <data name="MinPasswordLength" xml:space="preserve">
     <value>Lozinka ne smije biti kraća od 6 znakova.</value>
   </data>
+  <data name="PasswordsDontMatch" xml:space="preserve">
+    <value>Trenutna lozinka i potvrđena lozinka nisu iste.</value>
+  </data>
 </root>

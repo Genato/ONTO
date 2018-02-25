@@ -123,4 +123,7 @@
   <data name="MinPasswordLength" xml:space="preserve">
     <value>The password must be at least 6 characters long.</value>
   </data>
+  <data name="PasswordsDontMatch" xml:space="preserve">
+    <value>The password and confirmation password do not match.</value>
+  </data>
 </root>

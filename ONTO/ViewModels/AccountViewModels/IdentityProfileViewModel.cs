@@ -13,11 +13,11 @@ namespace ONTO.ViewModels.AccountViewModels
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Current Email")]
+        [Display(Name = nameof(Labels.CurrentEmail), ResourceType = typeof(Labels))]
         public string CurrentEmail { get; set; }
 
         [EmailAddress]
-        [Display(Name = "New Email")]
+        [Display(Name = nameof(Labels.NewEmail), ResourceType = typeof(Labels))]
         public string NewEmail { get; set; }
     }
 }

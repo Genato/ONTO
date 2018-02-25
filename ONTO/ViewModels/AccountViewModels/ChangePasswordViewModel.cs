@@ -1,4 +1,5 @@
-﻿using ONTO.Localization;
+﻿using Microsoft.AspNet.Identity;
+using ONTO.Localization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,15 +11,14 @@ namespace ONTO.ViewModels.AccountViewModels
     public class ChangePasswordViewModel
     {
         [Required]
-        [StringLength(100, MinimumLength = 6, ErrorMessageResourceName = nameof(ErrorMsg.MinPasswordLength), ErrorMessageResourceType = typeof(ErrorMsg))]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = nameof(Labels.CurrentPassword), ResourceType = typeof(Labels))]
         public string CurrentPassword { get; set; }
 
         [Required]
-        [StringLength(100, MinimumLength = 6, ErrorMessageResourceName = nameof(ErrorMsg.MinPasswordLength), ErrorMessageResourceType = typeof(ErrorMsg))]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = nameof(Labels.NewPassword), ResourceType = typeof(Labels))]
+        [StringLength(100, MinimumLength = 6, ErrorMessageResourceName = nameof(ErrorMsg.MinPasswordLength), ErrorMessageResourceType = typeof(ErrorMsg))]
         public string NewPassword { get; set; }
     }
 }

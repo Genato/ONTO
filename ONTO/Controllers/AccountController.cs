@@ -10,14 +10,17 @@ using ONTO.Models.ONTOModels;
 using ONTO.ViewModels.AccountViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace ONTO.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : OntoBaseController
     {
         public AccountController(ApplicationSignInManager signInManager, ApplicationUserManager userManager, IAuthenticationManager authenticationManager, UserSettingsLogic userSettingsLogic, LocaleLogic localeLogic)
         {
@@ -52,37 +55,35 @@ namespace ONTO.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Register(RegisterViewModel user)
         {
-            if (ModelState.IsValid)
+            user.Localization = _LocaleLogic.GetLocalizations();
+            
+            if (ModelState.IsValid == false)
+                return View(user);
+
+            var _user = new OntoIdentityUser { UserName = user.Email, Email = user.Email };
+            var result = await _UserManager.CreateAsync(_user, user.Password);
+
+            if (result.Succeeded == false)
             {
-                var _user = new OntoIdentityUser { UserName = user.Email, Email = user.Email };
-                var result = await _UserManager.CreateAsync(_user, user.Password);
-
-                if (result.Succeeded)
-                {
-                    await _SignInManager.SignInAsync(_user, isPersistent: false, rememberBrowser: false);
-
-                    //Create UserSettings and set localization for him
-                    OntoIdentityUser ontoUser = _UserManager.Find(user.Email, user.Password);
-
-                    UserSettings userSettings = new UserSettings()
-                    {
-                        UserID = ontoUser.Id,
-                        LocalizationID = user.SelectedLocale
-                    };
-
-                    _UserSettingsLogic.CreateEntity(userSettings);
-                    _LocaleLogic.SetLocalizationForCurrentUser(ontoUser.Id);
-
-                    return RedirectToAction("Index", "Home");
-                }
-
                 _UserSettingsLogic.AddErrors(ModelState, result);
+                return View(user);
             }
 
-            // If we got this far, something failed, redisplay form
-            user.Localization = _LocaleLogic.GetLocalizations();
+            await _SignInManager.SignInAsync(_user, isPersistent: false, rememberBrowser: false);
 
-            return View(user);
+            //Create UserSettings and set localization for currently created user
+            OntoIdentityUser ontoUser = _UserManager.Find(user.Email, user.Password);
+
+            UserSettings userSettings = new UserSettings()
+            {
+                UserID = ontoUser.Id,
+                LocalizationID = user.SelectedLocale
+            };
+
+            _UserSettingsLogic.CreateEntity(userSettings);
+            _LocaleLogic.SetLocalizationForCurrentUser(ontoUser.Id);
+
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: /Account/Login
@@ -106,9 +107,7 @@ namespace ONTO.Controllers
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid == false)
-            {
                 return View(model);
-            }
             
             var result = await _SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
 
@@ -179,7 +178,7 @@ namespace ONTO.Controllers
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel changePasswordViewModel)
         {
             if(ModelState.IsValid == false)
-                return View("Error", ModelState);
+                return View();
 
             IdentityResult identityResult = await _UserManager.UpdateUserPassword(changePasswordViewModel);
 
@@ -237,26 +236,5 @@ namespace ONTO.Controllers
         private IAuthenticationManager _AuthenticationManager { get; set; }
         private UserSettingsLogic _UserSettingsLogic { get; set; }
         private LocaleLogic _LocaleLogic { get; set; }
-
-        //Overriden methods
-
-        protected override void OnActionExecuted(ActionExecutedContext filterContext)
-        {
-            //TODO
-            //Replace identity messages with localized messages
-
-            ModelStateDictionary modelstate = ModelState;
-
-            base.OnActionExecuted(filterContext);
-        }
-        
-        /// <summary>
-        /// Exception handling.
-        /// </summary>
-        /// <param name="filterContext"></param>
-        protected override void OnException(ExceptionContext filterContext)
-        {
-            base.OnException(filterContext);
-        }
     }
 }

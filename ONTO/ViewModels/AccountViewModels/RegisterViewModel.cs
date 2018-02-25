@@ -12,22 +12,22 @@ namespace ONTO.ViewModels.AccountViewModels
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = nameof(Labels.Email), ResourceType = typeof(Labels))]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = nameof(Labels.Password), ResourceType = typeof(Labels))]
+        [StringLength(100, MinimumLength = 6, ErrorMessageResourceName = nameof(ErrorMsg.MinPasswordLength), ErrorMessageResourceType = typeof(ErrorMsg))]
         public string Password { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = nameof(Labels.ConfirmPassword), ResourceType = typeof(Labels))]
+        [Compare("Password", ErrorMessageResourceName = nameof(ErrorMsg.PasswordsDontMatch), ErrorMessageResourceType = typeof(ErrorMsg))]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = nameof(Labels.LocalizationLabel), ResourceType = typeof(Labels))]
+        [Display(Name = nameof(Labels.SelectLanguage), ResourceType = typeof(Labels))]
         public List<Locale> Localization { get; set; }
 
         public int SelectedLocale { get; set; }

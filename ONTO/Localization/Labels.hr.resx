@@ -120,8 +120,23 @@
   <data name="About" xml:space="preserve">
     <value>O nama</value>
   </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Promjeni lozinku</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Potvrdi lozinku</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Kontakt</value>
+  </data>
+  <data name="CurrentEmail" xml:space="preserve">
+    <value>Trenutna adresa pošte</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Trenutna lozinka</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Pošta</value>
   </data>
   <data name="Hello" xml:space="preserve">
     <value>Pozdrav</value>
@@ -132,21 +147,36 @@
   <data name="IdentityUserSettings" xml:space="preserve">
     <value>Postavke profila</value>
   </data>
-  <data name="LocalizationLabel" xml:space="preserve">
-    <value>Izaberi jezik</value>
-    <comment>Label for Localization</comment>
-  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Prijavi se</value>
   </data>
   <data name="LogOff" xml:space="preserve">
     <value>Odjavi se</value>
   </data>
+  <data name="NewEmail" xml:space="preserve">
+    <value>Nova adresa pošte</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nova lozinka</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Lozinka</value>
+  </data>
   <data name="Register" xml:space="preserve">
-    <value>Registriraj</value>
+    <value>Registriraj se</value>
+  </data>
+  <data name="RegisterNewAccount" xml:space="preserve">
+    <value>Kreiraj novi račun.</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Zapamti me</value>
   </data>
   <data name="SaveButtonLabel" xml:space="preserve">
     <value>Spremi</value>
+  </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value>Izaberi jezik</value>
+    <comment>Label for Localization</comment>
   </data>
   <data name="UserApplicationSettings" xml:space="preserve">
     <value>Korisničke postavke</value>

@@ -77,5 +77,14 @@ namespace ONTO.Localization {
                 return ResourceManager.GetString("MinPasswordLength", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password and confirmation password do not match..
+        /// </summary>
+        public static string PasswordsDontMatch {
+            get {
+                return ResourceManager.GetString("PasswordsDontMatch", resourceCulture);
+            }
+        }
     }
 }

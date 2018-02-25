@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace ONTO.Controllers
 {
     [AllowAnonymous]
-    public class HomeController : Controller
+    public class HomeController : OntoBaseController
     {
         public ActionResult Index()
         {
@@ -17,18 +17,11 @@ namespace ONTO.Controllers
 
         public ActionResult About()
         {
-            OntoHub hub = new OntoHub();
-            hub.ShowNotificationBar();
-
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

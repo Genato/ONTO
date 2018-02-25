@@ -1,7 +1,8 @@
 ﻿@using ONTO.Localization
 @model ONTO.ViewModels.AccountViewModels.UserAppSettingsViewModel
 
-<h2>UserAppSettings</h2>
+<h2>@Labels.UserApplicationSettings</h2>
+<hr />
 
 @using (Html.BeginForm("UserAppSettings", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {

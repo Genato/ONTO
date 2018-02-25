@@ -1,16 +1,14 @@
-﻿@model ONTO.ViewModels.AccountViewModels.RegisterViewModel
+﻿@using ONTO.Localization
+@model ONTO.ViewModels.AccountViewModels.RegisterViewModel
 
-@{
-    ViewBag.Title = "Register";
-}
-
-<h2>@ViewBag.Title.</h2>
+<h2>@Labels.Register</h2>
+<br />
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
-    <h4>Create a new account.</h4>
+    <h4>@Labels.RegisterNewAccount</h4>
     <hr />
 
     @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -40,7 +38,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+            <input type="submit" class="btn btn-success" value="Register" />
         </div>
     </div>
 }

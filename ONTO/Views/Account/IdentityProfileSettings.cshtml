@@ -2,7 +2,8 @@
 @model ONTO.ViewModels.AccountViewModels.IdentityProfileViewModel
 
 
-<h2>Profile</h2>
+<h2>@Labels.IdentityUserSettings</h2>
+<hr />
 
 @using (Html.BeginForm("IdentityProfileSettings", "Account", FormMethod.Post, new { @class = "form-horizontal profile-form-right-border", role = "form" }))
 {
@@ -29,5 +30,5 @@
 }
 
 <div class="change-password">
-    @Html.ActionLink("Change Password", "ChangePassword", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink(Labels.ChangePassword, "ChangePassword", null, new { @class = "btn btn-warning" })
 </div>

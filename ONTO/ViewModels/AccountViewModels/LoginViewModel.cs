@@ -1,20 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ONTO.Localization;
+using System.ComponentModel.DataAnnotations;
 
 namespace ONTO.ViewModels.AccountViewModels
 {
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
         [EmailAddress]
+        [Display(Name = nameof(Labels.Email), ResourceType = typeof(Labels))]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = nameof(Labels.Password), ResourceType = typeof(Labels))]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = nameof(Labels.RememberMe), ResourceType = typeof(Labels))]
         public bool RememberMe { get; set; }
     }
 }

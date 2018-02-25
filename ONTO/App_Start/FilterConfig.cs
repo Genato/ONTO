@@ -12,7 +12,6 @@ namespace ONTO
             filters.Add(new HandleErrorAttribute());
 
             //Custom filters
-            filters.Add(new LocalizationAttribute());
         }
     }
 }

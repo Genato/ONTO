@@ -194,6 +194,7 @@
     <Compile Include="BusinessLogic\UserSettingsLogic.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\OntoBaseController.cs" />
     <Compile Include="DAL\LocaleDAL.cs" />
     <Compile Include="DAL\OntoDAL.cs" />
     <Compile Include="DAL\UserSettingsDAL.cs" />
@@ -202,6 +203,7 @@
     </Compile>
     <Compile Include="Identity\ApplicationSignInManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
+    <Compile Include="Identity\Extensions\CustomUserValidator.cs" />
     <Compile Include="Localization\ErrorMsg.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -212,7 +214,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ErrorMsg.hr.resx</DependentUpon>
     </Compile>
-    <Compile Include="Localization\Extensions\LocalizationAttribute.cs" />
+    <Compile Include="Localization\Extensions\LocalizationExtension.cs" />
     <Compile Include="Localization\Labels.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
