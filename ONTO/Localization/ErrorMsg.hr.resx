@@ -117,13 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConfirmPasswordIsRequired" xml:space="preserve">
+    <value>Polje potvrdi lozinku je obvezno !</value>
+  </data>
+  <data name="CurrentEmailIsRequired" xml:space="preserve">
+    <value>Polje trenutna adresa pošte je obvezno !</value>
+  </data>
+  <data name="EmailAllreadyExists" xml:space="preserve">
+    <value>Za navedenu adresu pošte već postoji račun !</value>
+  </data>
+  <data name="EmailInvalidFormat" xml:space="preserve">
+    <value>Adresa pošte nije u dobrom formatu !</value>
+  </data>
+  <data name="EmailMustBeSpecified" xml:space="preserve">
+    <value>Adresa pošte ne može biti prazna !</value>
+  </data>
   <data name="InvaliLoginAttempt" xml:space="preserve">
     <value>Kombinacija email adrese i lozinke nije točna !</value>
   </data>
   <data name="MinPasswordLength" xml:space="preserve">
-    <value>Lozinka ne smije biti kraća od 6 znakova.</value>
+    <value>Lozinka ne smije biti kraća od 6 znakova !</value>
+  </data>
+  <data name="NewEmailIsRequired" xml:space="preserve">
+    <value>Polje nova adresa pošte je obvezno !</value>
+  </data>
+  <data name="PasswordIsRequired" xml:space="preserve">
+    <value>Polje lozinka je obvezno !</value>
+  </data>
+  <data name="PasswordRequireDigit" xml:space="preserve">
+    <value>Lozinka mora sadržavati barem jednu brojku ('0'-'9').</value>
+  </data>
+  <data name="PasswordRequireLowerCase" xml:space="preserve">
+    <value>Lozinka mora sadržavati barem jedno malo slovo ('a'-'z').</value>
   </data>
   <data name="PasswordsDontMatch" xml:space="preserve">
-    <value>Trenutna lozinka i potvrđena lozinka nisu iste.</value>
+    <value>Trenutna lozinka i potvrđena lozinka nisu iste !</value>
   </data>
 </root>

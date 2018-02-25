@@ -61,6 +61,51 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The confirm password field is required !.
+        /// </summary>
+        public static string ConfirmPasswordIsRequired {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The current email field is required !.
+        /// </summary>
+        public static string CurrentEmailIsRequired {
+            get {
+                return ResourceManager.GetString("CurrentEmailIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is already an account associated with the email you entered !.
+        /// </summary>
+        public static string EmailAllreadyExists {
+            get {
+                return ResourceManager.GetString("EmailAllreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email address is not in right format !.
+        /// </summary>
+        public static string EmailInvalidFormat {
+            get {
+                return ResourceManager.GetString("EmailInvalidFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email address must be specified !.
+        /// </summary>
+        public static string EmailMustBeSpecified {
+            get {
+                return ResourceManager.GetString("EmailMustBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Combination of email address and password is not correct !.
         /// </summary>
         public static string InvaliLoginAttempt {
@@ -70,7 +115,7 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The password must be at least 6 characters long..
+        ///   Looks up a localized string similar to The password must be at least 6 characters long !.
         /// </summary>
         public static string MinPasswordLength {
             get {
@@ -79,7 +124,43 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The password and confirmation password do not match..
+        ///   Looks up a localized string similar to The new email field is required !.
+        /// </summary>
+        public static string NewEmailIsRequired {
+            get {
+                return ResourceManager.GetString("NewEmailIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password field is required !.
+        /// </summary>
+        public static string PasswordIsRequired {
+            get {
+                return ResourceManager.GetString("PasswordIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords must have at least one digit (&apos;0&apos;-&apos;9&apos;)..
+        /// </summary>
+        public static string PasswordRequireDigit {
+            get {
+                return ResourceManager.GetString("PasswordRequireDigit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords must have at least one lowercase (&apos;a&apos;-&apos;z&apos;)..
+        /// </summary>
+        public static string PasswordRequireLowerCase {
+            get {
+                return ResourceManager.GetString("PasswordRequireLowerCase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password and confirmation password do not match !.
         /// </summary>
         public static string PasswordsDontMatch {
             get {

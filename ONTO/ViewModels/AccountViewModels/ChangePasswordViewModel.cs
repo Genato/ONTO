@@ -10,15 +10,15 @@ namespace ONTO.ViewModels.AccountViewModels
 {
     public class ChangePasswordViewModel
     {
-        [Required]
         [DataType(DataType.Password)]
         [Display(Name = nameof(Labels.CurrentPassword), ResourceType = typeof(Labels))]
+        [Required(ErrorMessageResourceName = nameof(ErrorMsg.PasswordIsRequired), ErrorMessageResourceType = typeof(ErrorMsg))]
         public string CurrentPassword { get; set; }
 
-        [Required]
         [DataType(DataType.Password)]
         [Display(Name = nameof(Labels.NewPassword), ResourceType = typeof(Labels))]
         [StringLength(100, MinimumLength = 6, ErrorMessageResourceName = nameof(ErrorMsg.MinPasswordLength), ErrorMessageResourceType = typeof(ErrorMsg))]
+        [Required(ErrorMessageResourceName = nameof(ErrorMsg.ConfirmPasswordIsRequired), ErrorMessageResourceType = typeof(ErrorMsg))]
         public string NewPassword { get; set; }
     }
 }

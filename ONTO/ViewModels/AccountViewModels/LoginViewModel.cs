@@ -5,14 +5,14 @@ namespace ONTO.ViewModels.AccountViewModels
 {
     public class LoginViewModel
     {
-        [Required]
-        [EmailAddress]
         [Display(Name = nameof(Labels.Email), ResourceType = typeof(Labels))]
+        [EmailAddress(ErrorMessageResourceName = nameof(ErrorMsg.EmailInvalidFormat), ErrorMessageResourceType = typeof(ErrorMsg))]
+        [Required(ErrorMessageResourceName = nameof(ErrorMsg.EmailMustBeSpecified), ErrorMessageResourceType = typeof(ErrorMsg))]
         public string Email { get; set; }
 
-        [Required]
         [DataType(DataType.Password)]
         [Display(Name = nameof(Labels.Password), ResourceType = typeof(Labels))]
+        [Required(ErrorMessageResourceName = nameof(ErrorMsg.PasswordIsRequired), ErrorMessageResourceType = typeof(ErrorMsg))]
         public string Password { get; set; }
 
         [Display(Name = nameof(Labels.RememberMe), ResourceType = typeof(Labels))]

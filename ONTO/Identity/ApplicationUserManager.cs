@@ -11,6 +11,7 @@ using System.Web;
 using static ONTO.Models.OntoIdentityUser;
 using ONTO.ViewModels.AccountViewModels;
 using System.Threading.Tasks;
+using ONTO.Identity.Extensions;
 
 namespace ONTO.Identity
 {
@@ -19,10 +20,7 @@ namespace ONTO.Identity
     /// </summary>
     public class ApplicationUserManager : UserManager<OntoIdentityUser>
     {
-        public ApplicationUserManager(IUserStore<OntoIdentityUser> store) : base(store)
-        {
-
-        }
+        public ApplicationUserManager(IUserStore<OntoIdentityUser> store) : base(store) { }
 
         /// <summary>
         /// Method updates all user properties (It doesn't update password !)
@@ -53,14 +51,14 @@ namespace ONTO.Identity
             var manager = new ApplicationUserManager(new UserStore<OntoIdentityUser>(context.Get<IdentityUserDbContext>()));
 
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<OntoIdentityUser>(manager)
+            manager.UserValidator = new CustomUserValidator(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
             };
-
+            
             // Configure validation logic for passwords
-            manager.PasswordValidator = new PasswordValidator
+            manager.PasswordValidator = new CustomPasswordValidator
             {
                 RequiredLength = 6,
                 RequireNonLetterOrDigit = false,

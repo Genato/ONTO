@@ -117,13 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConfirmPasswordIsRequired" xml:space="preserve">
+    <value>The confirm password field is required !</value>
+  </data>
+  <data name="CurrentEmailIsRequired" xml:space="preserve">
+    <value>The current email field is required !</value>
+  </data>
+  <data name="EmailAllreadyExists" xml:space="preserve">
+    <value>There is already an account associated with the email you entered !</value>
+  </data>
+  <data name="EmailInvalidFormat" xml:space="preserve">
+    <value>Email address is not in right format !</value>
+  </data>
+  <data name="EmailMustBeSpecified" xml:space="preserve">
+    <value>Email address must be specified !</value>
+  </data>
   <data name="InvaliLoginAttempt" xml:space="preserve">
     <value>Combination of email address and password is not correct !</value>
   </data>
   <data name="MinPasswordLength" xml:space="preserve">
-    <value>The password must be at least 6 characters long.</value>
+    <value>The password must be at least 6 characters long !</value>
+  </data>
+  <data name="NewEmailIsRequired" xml:space="preserve">
+    <value>The new email field is required !</value>
+  </data>
+  <data name="PasswordIsRequired" xml:space="preserve">
+    <value>The password field is required !</value>
+  </data>
+  <data name="PasswordRequireDigit" xml:space="preserve">
+    <value>Passwords must have at least one digit ('0'-'9').</value>
+  </data>
+  <data name="PasswordRequireLowerCase" xml:space="preserve">
+    <value>Passwords must have at least one lowercase ('a'-'z').</value>
   </data>
   <data name="PasswordsDontMatch" xml:space="preserve">
-    <value>The password and confirmation password do not match.</value>
+    <value>The password and confirmation password do not match !</value>
   </data>
 </root>
