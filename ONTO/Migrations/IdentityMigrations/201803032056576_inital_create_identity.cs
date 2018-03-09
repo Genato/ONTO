@@ -3,7 +3,7 @@ namespace ONTO.Migrations.IdentityMigrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class inital_create_identity : DbMigration
     {
         public override void Up()
         {
@@ -13,6 +13,7 @@ namespace ONTO.Migrations.IdentityMigrations
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(nullable: false, maxLength: 256),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
@@ -23,13 +24,12 @@ namespace ONTO.Migrations.IdentityMigrations
                     {
                         UserId = c.String(nullable: false, maxLength: 128),
                         RoleId = c.String(nullable: false, maxLength: 128),
-                        IdentityUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
                 .ForeignKey("identity.Roles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("identity.Users", t => t.IdentityUser_Id)
-                .Index(t => t.RoleId)
-                .Index(t => t.IdentityUser_Id);
+                .ForeignKey("identity.Users", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
             
             CreateTable(
                 "identity.Users",
@@ -47,7 +47,6 @@ namespace ONTO.Migrations.IdentityMigrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.UserId)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
@@ -57,14 +56,13 @@ namespace ONTO.Migrations.IdentityMigrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(),
+                        UserId = c.String(nullable: false, maxLength: 128),
                         ClaimType = c.String(),
                         ClaimValue = c.String(),
-                        IdentityUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("identity.Users", t => t.IdentityUser_Id)
-                .Index(t => t.IdentityUser_Id);
+                .ForeignKey("identity.Users", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
             
             CreateTable(
                 "identity.UserLogins",
@@ -73,25 +71,24 @@ namespace ONTO.Migrations.IdentityMigrations
                         LoginProvider = c.String(nullable: false, maxLength: 128),
                         ProviderKey = c.String(nullable: false, maxLength: 128),
                         UserId = c.String(nullable: false, maxLength: 128),
-                        IdentityUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("identity.Users", t => t.IdentityUser_Id)
-                .Index(t => t.IdentityUser_Id);
+                .ForeignKey("identity.Users", t => t.UserId, cascadeDelete: true)
+                .Index(t => t.UserId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("identity.UserRoles", "IdentityUser_Id", "identity.Users");
-            DropForeignKey("identity.UserLogins", "IdentityUser_Id", "identity.Users");
-            DropForeignKey("identity.UserClaims", "IdentityUser_Id", "identity.Users");
+            DropForeignKey("identity.UserRoles", "UserId", "identity.Users");
+            DropForeignKey("identity.UserLogins", "UserId", "identity.Users");
+            DropForeignKey("identity.UserClaims", "UserId", "identity.Users");
             DropForeignKey("identity.UserRoles", "RoleId", "identity.Roles");
-            DropIndex("identity.UserLogins", new[] { "IdentityUser_Id" });
-            DropIndex("identity.UserClaims", new[] { "IdentityUser_Id" });
+            DropIndex("identity.UserLogins", new[] { "UserId" });
+            DropIndex("identity.UserClaims", new[] { "UserId" });
             DropIndex("identity.Users", "UserNameIndex");
-            DropIndex("identity.UserRoles", new[] { "IdentityUser_Id" });
             DropIndex("identity.UserRoles", new[] { "RoleId" });
+            DropIndex("identity.UserRoles", new[] { "UserId" });
             DropIndex("identity.Roles", "RoleNameIndex");
             DropTable("identity.UserLogins");
             DropTable("identity.UserClaims");

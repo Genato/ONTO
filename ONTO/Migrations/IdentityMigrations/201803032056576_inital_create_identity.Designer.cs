@@ -7,13 +7,13 @@ namespace ONTO.Migrations.IdentityMigrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class inital_create_identity : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(inital_create_identity));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801071919078_InitialCreate"; }
+            get { return "201803032056576_inital_create_identity"; }
         }
         
         string IMigrationMetadata.Source
