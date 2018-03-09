@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using ONTO.Models;
+using ONTO.Models.IdentityModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -26,12 +27,14 @@ namespace ONTO.DbContexts
 
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<IdentityUser>().ToTable("Users").Property(p => p.Id).HasColumnName("UserId");
+            //Users
             modelBuilder.Entity<OntoIdentityUser>().ToTable("Users").Property(p => p.Id).HasColumnName("UserId");
-            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
+
+            //Roles
             modelBuilder.Entity<IdentityRole>().ToTable("Roles");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
         }
     }
 }

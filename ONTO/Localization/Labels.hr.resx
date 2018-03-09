@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>O nama</value>
   </data>
+  <data name="AdminSettings" xml:space="preserve">
+    <value>Upraviteljske postavke</value>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Promjeni lozinku</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="Home" xml:space="preserve">
     <value>Početna</value>
   </data>
+  <data name="IdentityRoles" xml:space="preserve">
+    <value>Uloge</value>
+  </data>
   <data name="IdentityUserSettings" xml:space="preserve">
     <value>Postavke profila</value>
   </data>
@@ -166,10 +172,19 @@
     <value>Registriraj se</value>
   </data>
   <data name="RegisterNewAccount" xml:space="preserve">
-    <value>Kreiraj novi račun.</value>
+    <value>Kreiraj novi račun</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Zapamti me</value>
+  </data>
+  <data name="RoleCreate" xml:space="preserve">
+    <value>Kreiraj novu ulogu</value>
+  </data>
+  <data name="RoleList" xml:space="preserve">
+    <value>Lista uloga</value>
+  </data>
+  <data name="RoleManage" xml:space="preserve">
+    <value>Manage roles</value>
   </data>
   <data name="SaveButtonLabel" xml:space="preserve">
     <value>Spremi</value>
@@ -180,5 +195,8 @@
   </data>
   <data name="UserApplicationSettings" xml:space="preserve">
     <value>Korisničke postavke</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Korisnici</value>
   </data>
 </root>

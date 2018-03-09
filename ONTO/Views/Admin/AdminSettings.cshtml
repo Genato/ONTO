@@ -1,0 +1,14 @@
+﻿@using ONTO.Localization
+
+<h2>@Labels.AdminSettings</h2>
+<hr />
+
+<div class="list-group admin-settings">
+    <h4>@Labels.Users</h4>
+    @Html.ActionLink(Labels.RegisterNewAccount, "Register", "Admin", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action col-sm-4" })
+
+    <h4>@Labels.IdentityRoles</h4>
+    @Html.ActionLink(Labels.RoleCreate, "CreateRole", "Admin", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action col-sm-4" })
+    @Html.ActionLink(Labels.RoleList, "ListRoles", "Admin", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action col-sm-4" })
+    @Html.ActionLink(Labels.RoleManage, "ManageRoles", "Admin", routeValues: null, htmlAttributes: new { @class = "list-group-item list-group-item-action col-sm-4" })
+</div>

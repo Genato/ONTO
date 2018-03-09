@@ -1,4 +1,5 @@
 ﻿using ONTO.Localization;
+using ONTO.Models.IdentityModels;
 using ONTO.Models.ONTOModels;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ONTO.ViewModels.AccountViewModels
+namespace ONTO.ViewModels.AdminViewModels
 {
     public class RegisterViewModel
     {
@@ -30,6 +31,10 @@ namespace ONTO.ViewModels.AccountViewModels
         [Display(Name = nameof(Labels.SelectLanguage), ResourceType = typeof(Labels))]
         public List<Locale> Localization { get; set; }
 
+        [Display(Name = nameof(Labels.IdentityRoles), ResourceType = typeof(Labels))]
+        public List<OntoIdentityRole> Roles { get; set; }
+
         public int SelectedLocale { get; set; }
+        public int SelectedRole { get; set; }
     }
 }

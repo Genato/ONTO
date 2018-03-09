@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="AdminSettings" xml:space="preserve">
+    <value>Admin settings</value>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Change password</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="IdentityRoles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
   <data name="IdentityUserSettings" xml:space="preserve">
     <value>Identity user settings</value>
   </data>
@@ -166,10 +172,19 @@
     <value>Register</value>
   </data>
   <data name="RegisterNewAccount" xml:space="preserve">
-    <value>Create a new account.</value>
+    <value>Create a new account</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Remember me</value>
+  </data>
+  <data name="RoleCreate" xml:space="preserve">
+    <value>Create new role</value>
+  </data>
+  <data name="RoleList" xml:space="preserve">
+    <value>List roles</value>
+  </data>
+  <data name="RoleManage" xml:space="preserve">
+    <value>Manage roles</value>
   </data>
   <data name="SaveButtonLabel" xml:space="preserve">
     <value>Save</value>
@@ -180,5 +195,8 @@
   </data>
   <data name="UserApplicationSettings" xml:space="preserve">
     <value>User application settings</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
   </data>
 </root>

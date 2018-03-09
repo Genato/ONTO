@@ -55,7 +55,7 @@ footer{
 }
 /** Form - "profile-form-right-borde" **/
 
-/** DropdownMenu **/
+/** DropdownMenu - navbar **/
 .house-icon {
     font-size: 20px;
 }
@@ -105,7 +105,7 @@ footer{
 .house-icon:hover {
     text-shadow: 2px 2px 10px #e5fcf3;
 }
-/*** DropdownMenu ***/
+/** DropdownMenu - navbar **/
 
 /*** NotificationBar ***/
 #notification {
@@ -126,3 +126,13 @@ footer{
 }
 /*** NotificationBar ***/
 
+/*** Admin settings ***/
+.admin-settings a {
+    float: none;
+}
+
+.admin-settings a:hover {
+    background-color: #69b1f7;
+    color: whitesmoke;
+}
+/*** Admin settings ***/

@@ -1,15 +1,12 @@
 ﻿@using ONTO.Localization
-@model ONTO.ViewModels.AccountViewModels.RegisterViewModel
+@model ONTO.ViewModels.AdminViewModels.RegisterViewModel
 
-<h2>@Labels.Register</h2>
-<br />
+<h2>@Labels.RegisterNewAccount</h2>
+<hr />
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Register", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-
-    <h4>@Labels.RegisterNewAccount</h4>
-    <hr />
 
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">

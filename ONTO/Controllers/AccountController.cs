@@ -2,88 +2,25 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ONTO.BusinessLogic;
-using ONTO.DbContexts;
 using ONTO.Identity;
 using ONTO.Localization;
 using ONTO.Models;
 using ONTO.Models.ONTOModels;
 using ONTO.ViewModels.AccountViewModels;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ONTO.Controllers
 {
     public class AccountController : OntoBaseController
     {
-        public AccountController(ApplicationSignInManager signInManager, ApplicationUserManager userManager, IAuthenticationManager authenticationManager, UserSettingsLogic userSettingsLogic, LocaleLogic localeLogic)
+        public AccountController(OntoIdentitySignInManager signInManager, OntoIdentityUserManager userManager, IAuthenticationManager authenticationManager, UserSettingsLogic userSettingsLogic, LocaleLogic localeLogic)
         {
             _SignInManager = signInManager;
             _UserManager = userManager;
             _AuthenticationManager = authenticationManager;
             _UserSettingsLogic = userSettingsLogic;
             _LocaleLogic = localeLogic;
-        }
-
-        // GET: User
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
-            RegisterViewModel registerViewModel = new RegisterViewModel()
-            {
-                Localization = _LocaleLogic.GetLocalizations()
-            };
-
-            return View(registerViewModel);
-        }
-
-        /// <summary>
-        /// POST: /Account/Register <para/>
-        /// Action register new user to {schema}.{table} => {identity}.{Users} and UserSettings to {onto}.{User_Settings}. <para/>
-        /// It also sets localization for currently created and loged in user.
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [AllowAnonymous]
-        public async Task<ActionResult> Register(RegisterViewModel user)
-        {
-            user.Localization = _LocaleLogic.GetLocalizations();
-            
-            if (ModelState.IsValid == false)
-                return View(user);
-
-            var _user = new OntoIdentityUser { UserName = user.Email, Email = user.Email };
-            var result = await _UserManager.CreateAsync(_user, user.Password);
-
-            if (result.Succeeded == false)
-            {
-                _UserSettingsLogic.AddErrors(ModelState, result);
-                return View(user);
-            }
-
-            await _SignInManager.SignInAsync(_user, isPersistent: false, rememberBrowser: false);
-
-            //Create UserSettings and set localization for currently created user
-            OntoIdentityUser ontoUser = _UserManager.Find(user.Email, user.Password);
-
-            UserSettings userSettings = new UserSettings()
-            {
-                UserID = ontoUser.Id,
-                LocalizationID = user.SelectedLocale
-            };
-
-            _UserSettingsLogic.CreateEntity(userSettings);
-            _LocaleLogic.SetLocalizationForCurrentUser(ontoUser.Id);
-
-            return RedirectToAction("Index", "Home");
         }
 
         // GET: /Account/Login
@@ -231,8 +168,8 @@ namespace ONTO.Controllers
         }
 
         ///Private members section
-        private ApplicationSignInManager _SignInManager { get; set; }
-        private ApplicationUserManager _UserManager { get; set; }
+        private OntoIdentitySignInManager _SignInManager { get; set; }
+        private OntoIdentityUserManager _UserManager { get; set; }
         private IAuthenticationManager _AuthenticationManager { get; set; }
         private UserSettingsLogic _UserSettingsLogic { get; set; }
         private LocaleLogic _LocaleLogic { get; set; }

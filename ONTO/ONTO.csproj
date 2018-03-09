@@ -192,6 +192,7 @@
     <Compile Include="BusinessLogic\LocaleLogic.cs" />
     <Compile Include="BusinessLogic\OntoLogic.cs" />
     <Compile Include="BusinessLogic\UserSettingsLogic.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\OntoBaseController.cs" />
@@ -201,10 +202,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Identity\ApplicationSignInManager.cs" />
-    <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Identity\Extensions\CustomPasswordValidator.cs" />
     <Compile Include="Identity\Extensions\CustomUserValidator.cs" />
+    <Compile Include="Identity\OntoIdentityRoleManager.cs" />
+    <Compile Include="Identity\OntoIdentitySignInManager.cs" />
+    <Compile Include="Identity\OntoIdentityUserManager.cs" />
     <Compile Include="Localization\ErrorMsg.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -236,9 +238,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SuccessMsg.hr.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\IdentityMigrations\201801071919078_InitialCreate.cs" />
-    <Compile Include="Migrations\IdentityMigrations\201801071919078_InitialCreate.Designer.cs">
-      <DependentUpon>201801071919078_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\IdentityMigrations\201803032056576_inital_create_identity.cs" />
+    <Compile Include="Migrations\IdentityMigrations\201803032056576_inital_create_identity.Designer.cs">
+      <DependentUpon>201803032056576_inital_create_identity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\IdentityMigrations\Configuration.cs" />
     <Compile Include="Migrations\ONTOMigrations\201801071924225_InitialCreate.cs" />
@@ -275,6 +277,7 @@
     </Compile>
     <Compile Include="Migrations\ONTOMigrations\Configuration.cs" />
     <Compile Include="DbContexts\IdentityUserDbContext.cs" />
+    <Compile Include="Models\IdentityModels\OntoIdentityRole.cs" />
     <Compile Include="Models\IdentityModels\OntoIdentityUser.cs" />
     <Compile Include="Models\ONTOModels\KatalogKljučnihBrojevaOtpada.cs" />
     <Compile Include="DbContexts\OntoDbContext.cs" />
@@ -287,8 +290,8 @@
     <Compile Include="ViewModels\AccountViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\IdentityProfileViewModel.cs" />
-    <Compile Include="ViewModels\AccountViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\UserAppSettingsViewModel.cs" />
+    <Compile Include="ViewModels\AdminViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -316,6 +319,9 @@
     <EmbeddedResource Include="Localization\SuccessMsg.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SuccessMsg.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\IdentityMigrations\201803032056576_inital_create_identity.resx">
+      <DependentUpon>201803032056576_inital_create_identity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ONTOMigrations\201802141423534_Added_UserProfileSettings_model.resx">
       <DependentUpon>201802141423534_Added_UserProfileSettings_model.cs</DependentUpon>
@@ -375,10 +381,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\IdentityProfileSettings.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\UserAppSettings.cshtml" />
+    <Content Include="Views\Admin\AdminSettings.cshtml" />
+    <Content Include="Views\Admin\ListRoles.cshtml" />
+    <Content Include="Views\Admin\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -394,9 +402,6 @@
     <EmbeddedResource Include="Localization\ErrorMsg.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorMsg.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\IdentityMigrations\201801071919078_InitialCreate.resx">
-      <DependentUpon>201801071919078_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ONTOMigrations\201801071924225_InitialCreate.resx">
       <DependentUpon>201801071924225_InitialCreate.cs</DependentUpon>

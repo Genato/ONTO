@@ -37,24 +37,17 @@ namespace ONTO
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
             /// Add Identity to DI(Dependency Injection) - Start
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
-            // ApplicationUserManager
-            services.AddTransient(typeof(ApplicationUserManager), f => HttpContext.Current.GetOwinContext().Get<ApplicationUserManager>());
 
-            // ApplicationSignInManager
+            // ApplicationUserManager
+            services.AddTransient(typeof(OntoIdentityUserManager), f => HttpContext.Current.GetOwinContext().Get<OntoIdentityUserManager>());
+            // IAuthenticationManager
             // instantiation requires two parameters, [ApplicationUserManager] (defined above) and [IAuthenticationManager]
             services.AddTransient(typeof(Microsoft.Owin.Security.IAuthenticationManager), f => HttpContext.Current.GetOwinContext().Authentication);
-            //services.AddTransient(typeof(Microsoft.Owin.Security.IAuthenticationManager), f => new OwinContext().Authentication);
-            services.AddTransient(typeof(ApplicationSignInManager), f => HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>());
+            // ApplicationSignInManager
+            services.AddTransient(typeof(OntoIdentitySignInManager), f => HttpContext.Current.GetOwinContext().Get<OntoIdentitySignInManager>());
+            // ApplicationRoleManager
+            services.AddTransient(typeof(OntoIdentityRoleManager), f => HttpContext.Current.GetOwinContext().Get<OntoIdentityRoleManager>());
 
-            //NOT IMPLEMENTED
-            ////====================================================
-            //// ApplicationRoleManager
-            ////====================================================
-            //// Maps the rolemanager of identity role to the concrete role manager type
-            //services.AddTransient<RoleManager<IdentityRole>, ApplicationRoleManager>();
-            //// Maps the role store role to the implemented type
-            //services.AddTransient<IRoleStore<IdentityRole, string>, RoleStore<IdentityRole>>();
-            //services.AddTransient(typeof(ApplicationRoleManager));
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
             /// Add Identity to DI(Dependency Injection) - End
             ////////////////////////////////////////////////////////////////////////////////////////////////////////

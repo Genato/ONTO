@@ -70,6 +70,15 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Admin settings.
+        /// </summary>
+        public static string AdminSettings {
+            get {
+                return ResourceManager.GetString("AdminSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change password.
         /// </summary>
         public static string ChangePassword {
@@ -142,6 +151,15 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Roles.
+        /// </summary>
+        public static string IdentityRoles {
+            get {
+                return ResourceManager.GetString("IdentityRoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Identity user settings.
         /// </summary>
         public static string IdentityUserSettings {
@@ -205,7 +223,7 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new account..
+        ///   Looks up a localized string similar to Create a new account.
         /// </summary>
         public static string RegisterNewAccount {
             get {
@@ -219,6 +237,33 @@ namespace ONTO.Localization {
         public static string RememberMe {
             get {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new role.
+        /// </summary>
+        public static string RoleCreate {
+            get {
+                return ResourceManager.GetString("RoleCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List roles.
+        /// </summary>
+        public static string RoleList {
+            get {
+                return ResourceManager.GetString("RoleList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage roles.
+        /// </summary>
+        public static string RoleManage {
+            get {
+                return ResourceManager.GetString("RoleManage", resourceCulture);
             }
         }
         
@@ -246,6 +291,15 @@ namespace ONTO.Localization {
         public static string UserApplicationSettings {
             get {
                 return ResourceManager.GetString("UserApplicationSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
     }

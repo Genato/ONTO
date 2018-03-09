@@ -18,9 +18,9 @@ namespace ONTO.Identity
     /// <summary>
     /// Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     /// </summary>
-    public class ApplicationUserManager : UserManager<OntoIdentityUser>
+    public class OntoIdentityUserManager : UserManager<OntoIdentityUser>
     {
-        public ApplicationUserManager(IUserStore<OntoIdentityUser> store) : base(store) { }
+        public OntoIdentityUserManager(IUserStore<OntoIdentityUser> store) : base(store) { }
 
         /// <summary>
         /// Method updates all user properties (It doesn't update password !)
@@ -46,9 +46,9 @@ namespace ONTO.Identity
             return await this.ChangePasswordAsync(HttpContext.Current.User.Identity.GetUserId(), changePasswordViewModel.CurrentPassword, changePasswordViewModel.NewPassword);
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
+        public static OntoIdentityUserManager Create(IdentityFactoryOptions<OntoIdentityUserManager> options, IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<OntoIdentityUser>(context.Get<IdentityUserDbContext>()));
+            var manager = new OntoIdentityUserManager(new UserStore<OntoIdentityUser>(context.Get<IdentityUserDbContext>()));
 
             // Configure validation logic for usernames
             manager.UserValidator = new CustomUserValidator(manager)
@@ -64,7 +64,7 @@ namespace ONTO.Identity
                 RequireNonLetterOrDigit = false,
                 RequireDigit = true,
                 RequireLowercase = true,
-                RequireUppercase = false,
+                RequireUppercase = false
             };
 
             // Configure user lockout defaults
