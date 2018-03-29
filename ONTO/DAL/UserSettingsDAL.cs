@@ -61,6 +61,6 @@ namespace ONTO.DAL
         }
 
         //Private members
-        public UserSettings _UserSettings { get; set; }
+        private UserSettings _UserSettings { get; set; }
     }
 }
