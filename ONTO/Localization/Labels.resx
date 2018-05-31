@@ -147,11 +147,11 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="IdentityProfileSettings" xml:space="preserve">
+    <value>Identity user settings</value>
+  </data>
   <data name="IdentityRoles" xml:space="preserve">
     <value>Roles</value>
-  </data>
-  <data name="IdentityUserSettings" xml:space="preserve">
-    <value>Identity user settings</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log in</value>

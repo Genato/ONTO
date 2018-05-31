@@ -147,11 +147,11 @@
   <data name="Home" xml:space="preserve">
     <value>Početna</value>
   </data>
+  <data name="IdentityProfileSettings" xml:space="preserve">
+    <value>Postavke profila</value>
+  </data>
   <data name="IdentityRoles" xml:space="preserve">
     <value>Uloge</value>
-  </data>
-  <data name="IdentityUserSettings" xml:space="preserve">
-    <value>Postavke profila</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Prijavi se</value>

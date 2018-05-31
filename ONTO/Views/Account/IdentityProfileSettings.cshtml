@@ -2,7 +2,7 @@
 @model ONTO.ViewModels.AccountViewModels.IdentityProfileViewModel
 
 
-<h2>@Labels.IdentityUserSettings</h2>
+<h2>@Labels.IdentityProfileSettings</h2>
 <hr />
 
 @using (Html.BeginForm("IdentityProfileSettings", "Account", FormMethod.Post, new { @class = "form-horizontal profile-form-right-border", role = "form" }))
@@ -12,11 +12,11 @@
 
     <div class="form-group">
         @Html.LabelFor(m => m.CurrentEmail)
-            @Html.TextBoxFor(m => m.CurrentEmail, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.CurrentEmail, new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.NewEmail)
-        <div >
+        <div>
             @Html.TextBoxFor(m => m.NewEmail, new { @class = "form-control" })
         </div>
     </div>
@@ -29,6 +29,8 @@
 
 }
 
-<div class="change-password">
-    @Html.ActionLink(Labels.ChangePassword, "ChangePassword", null, new { @class = "btn btn-warning" })
+<div class="form-right-border-right-menu">
+    <div class="list-group user-app-settings">
+        @Html.ActionLink(Labels.ChangePassword, "ChangePassword", null, new { @class = "list-group-item list-group-item-action" })
+    </div>
 </div>

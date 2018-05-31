@@ -4,21 +4,28 @@
 <h2>@Labels.UserApplicationSettings</h2>
 <hr />
 
-@using (Html.BeginForm("UserAppSettings", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("UserAppSettings", "Account", FormMethod.Post, new { @class = "form-horizontal profile-form-right-border", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Localization, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(m => m.Localization)
+        <div>
             @Html.DropDownListFor(m => m.SelectedLocale, new SelectList(Model.Localization, "ID", "_Localization", Model.SelectedLocale), new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div>
             <input type="submit" class="btn btn-success" value=@Labels.SaveButtonLabel />
         </div>
     </div>
 }
+
+
+<div class="form-right-border-right-menu">
+    <div class="list-group admin-settings">
+        @Html.ActionLink(Labels.IdentityProfileSettings, "IdentityProfileSettings", "Account", null, htmlAttributes: new { @class = "list-group-item list-group-item-action" })
+    </div>
+</div>

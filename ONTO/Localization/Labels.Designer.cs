@@ -151,20 +151,20 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Identity user settings.
+        /// </summary>
+        public static string IdentityProfileSettings {
+            get {
+                return ResourceManager.GetString("IdentityProfileSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Roles.
         /// </summary>
         public static string IdentityRoles {
             get {
                 return ResourceManager.GetString("IdentityRoles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Identity user settings.
-        /// </summary>
-        public static string IdentityUserSettings {
-            get {
-                return ResourceManager.GetString("IdentityUserSettings", resourceCulture);
             }
         }
         

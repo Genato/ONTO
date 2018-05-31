@@ -12,8 +12,8 @@ footer{
     background-color: #070f3d;
 }
 
-/** Form - "profile-form-right-borde" **/
-.change-password {
+/** Form - "profile-form-right-border" **/
+.form-right-border-right-menu {
     position: relative;
     margin: 1%;
     left: 1%;
@@ -22,8 +22,13 @@ footer{
     padding: 1%;
 }
 
-.change-password a {
+.form-right-border-right-menu a {
     margin-top: 9px;
+}
+
+.user-app-settings a:hover {
+    background-color: darkorange;
+    color: whitesmoke;
 }
 
 .profile-form-right-border {

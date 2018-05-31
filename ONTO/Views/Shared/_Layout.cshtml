@@ -45,7 +45,6 @@
                             <li class="dropdown dropdown-extensiom">
                                 @Html.ActionLink(Labels.Hello + " " + User.Identity.Name + "!", "Profile", "Account", routeValues: null, htmlAttributes: new { @data_toggle = "dropdown", title = "Manage" })
                                 <ul class="dropdown-menu dropdown-menu-extension dropdown-menu-extension-user">
-                                    <li>@Html.ActionLink(Labels.IdentityUserSettings, "IdentityProfileSettings", "Account")</li>
                                     <li>@Html.ActionLink(Labels.UserApplicationSettings, "UserAppSettings", "Account")</li>
 
                                     @if (User.IsInRole("Admin"))

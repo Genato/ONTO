@@ -33,7 +33,7 @@ namespace ONTO.Controllers
 
         /// <summary>
         /// POST: /Account/Login <para/>
-        /// Action login user and sets localization for it.
+        /// This action login user and sets localization for it.
         /// </summary>
         /// <param name="model"></param>
         /// <param name="returnUrl"></param>
@@ -54,7 +54,7 @@ namespace ONTO.Controllers
                 return View(model);
             }
 
-            // Successfully logged in
+            // If user is successfully logged in set localization for it
             OntoIdentityUser ontoUser = _UserManager.Find(model.Email, model.Password);
             _LocaleLogic.SetLocalizationForCurrentUser(ontoUser.Id);
 
@@ -71,6 +71,10 @@ namespace ONTO.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// Get Identity profile settings
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult IdentityProfileSettings()
         {
@@ -125,6 +129,10 @@ namespace ONTO.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Get user application settings.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult UserAppSettings()
         {
