@@ -89,11 +89,17 @@ namespace ONTO.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateRole(CreateRoleViewModel createRoleViewModel)
+        public async Task<ActionResult> CreateRole(CreateRoleViewModel createRoleViewModel)
         {
             OntoIdentityRole role = new OntoIdentityRole(createRoleViewModel.RoleName);
 
-            _RoleManager.CreateAsync(role);
+            var result = await _RoleManager.CreateAsync(role);
+
+            if (result.Succeeded == false)
+            {
+                _UserSettingsLogic.AddErrors(ModelState, result);
+                return View();
+            }
 
             return View();
         }

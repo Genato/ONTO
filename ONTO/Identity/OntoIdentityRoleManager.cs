@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using ONTO.DbContexts;
+using ONTO.Identity.Extensions;
 using ONTO.Models.IdentityModels;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace ONTO.Identity
         public static OntoIdentityRoleManager Create(IdentityFactoryOptions<OntoIdentityRoleManager> options, IOwinContext context)
         {
             OntoIdentityRoleManager ontoIdentityRoleManager = new OntoIdentityRoleManager(new RoleStore<OntoIdentityRole>(context.Get<IdentityUserDbContext>()));
+
+            ontoIdentityRoleManager.RoleValidator = new CustomRoleValidator(ontoIdentityRoleManager);
 
             return ontoIdentityRoleManager;
         }

@@ -153,4 +153,10 @@
   <data name="PasswordsDontMatch" xml:space="preserve">
     <value>The password and confirmation password do not match !</value>
   </data>
+  <data name="RoleAllreadyExists" xml:space="preserve">
+    <value>Role with the same name already exists !</value>
+  </data>
+  <data name="RoleNameMustBeSpecified" xml:space="preserve">
+    <value>Role name must be specified !</value>
+  </data>
 </root>

@@ -204,6 +204,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Identity\Extensions\CustomPasswordValidator.cs" />
+    <Compile Include="Identity\Extensions\CustomRoleValidator.cs" />
     <Compile Include="Identity\Extensions\CustomUserValidator.cs" />
     <Compile Include="Identity\OntoIdentityRoleManager.cs" />
     <Compile Include="Identity\OntoIdentitySignInManager.cs" />

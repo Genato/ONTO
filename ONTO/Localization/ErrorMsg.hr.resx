@@ -153,4 +153,10 @@
   <data name="PasswordsDontMatch" xml:space="preserve">
     <value>Trenutna lozinka i potvrđena lozinka nisu iste !</value>
   </data>
+  <data name="RoleAllreadyExists" xml:space="preserve">
+    <value>Uloga sa istim imenom već postoji !</value>
+  </data>
+  <data name="RoleNameMustBeSpecified" xml:space="preserve">
+    <value>Polje ime uloga ne može biti prazno !</value>
+  </data>
 </root>

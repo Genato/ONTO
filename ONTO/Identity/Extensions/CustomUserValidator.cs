@@ -45,7 +45,7 @@ namespace ONTO.Identity.Extensions
 
             Task<OntoIdentityUser> _user =  _Manager.FindByEmailAsync(user.Email);
 
-            if (_user.Result != null && _user.Result.Id != user.Id)
+            if (_user.Result != null && _user.Result.Email == user.Email)
                 _Errors.Add(ErrorMsg.EmailAllreadyExists);
         }
 

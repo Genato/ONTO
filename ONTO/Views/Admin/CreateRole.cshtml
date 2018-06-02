@@ -2,18 +2,23 @@
 @using ONTO.Localization
 
 <h2>@Labels.RoleCreate</h2>
+<hr />
 
-@using (Html.BeginForm("CreateRole", "Admin", FormMethod.Post))
+@using (Html.BeginForm("CreateRole", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary("", new { @class = "text-danger" })
 
     <div class="form-group">
         @Html.LabelFor(m => m.RoleName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.RoleName)
+            @Html.TextBoxFor(m => m.RoleName, new { @class = "form-control" })
         </div>
     </div>
 
-    <input type="submit" value=@Labels.RoleCreate />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-success" value=@Labels.RoleCreate />
+        </div>
+    </div>
 }

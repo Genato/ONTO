@@ -167,5 +167,23 @@ namespace ONTO.Localization {
                 return ResourceManager.GetString("PasswordsDontMatch", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role with the same name already exists !.
+        /// </summary>
+        public static string RoleAllreadyExists {
+            get {
+                return ResourceManager.GetString("RoleAllreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role name must be specified !.
+        /// </summary>
+        public static string RoleNameMustBeSpecified {
+            get {
+                return ResourceManager.GetString("RoleNameMustBeSpecified", resourceCulture);
+            }
+        }
     }
 }
