@@ -2,6 +2,7 @@
 using ONTO.BusinessLogic;
 using ONTO.Identity;
 using ONTO.Models;
+using ONTO.Models.IdentityModels;
 using ONTO.Models.ONTOModels;
 using ONTO.ViewModels.AccountViewModels;
 using ONTO.ViewModels.AdminViewModels;
@@ -58,7 +59,7 @@ namespace ONTO.Controllers
             if (ModelState.IsValid == false)
                 return View(user);
 
-            var _user = new OntoIdentityUser { UserName = user.Email, Email = user.Email };
+            OntoIdentityUser _user = new OntoIdentityUser { UserName = user.Email, Email = user.Email };
             var result = await _UserManager.CreateAsync(_user, user.Password);
 
             if (result.Succeeded == false)
@@ -81,9 +82,19 @@ namespace ONTO.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult CreateRole()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateRole(CreateRoleViewModel createRoleViewModel)
+        {
+            OntoIdentityRole role = new OntoIdentityRole(createRoleViewModel.RoleName);
+
+            _RoleManager.CreateAsync(role);
+
             return View();
         }
 

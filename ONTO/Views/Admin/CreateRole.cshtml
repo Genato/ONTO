@@ -1,0 +1,19 @@
+﻿@model ONTO.ViewModels.AdminViewModels.CreateRoleViewModel
+@using ONTO.Localization
+
+<h2>@Labels.RoleCreate</h2>
+
+@using (Html.BeginForm("CreateRole", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RoleName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.RoleName)
+        </div>
+    </div>
+
+    <input type="submit" value=@Labels.RoleCreate />
+}

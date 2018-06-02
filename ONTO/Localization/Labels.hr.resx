@@ -186,6 +186,9 @@
   <data name="RoleManage" xml:space="preserve">
     <value>Manage roles</value>
   </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>Ime uloge</value>
+  </data>
   <data name="SaveButtonLabel" xml:space="preserve">
     <value>Spremi</value>
   </data>
