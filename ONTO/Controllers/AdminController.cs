@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace ONTO.Controllers
 {
@@ -105,11 +106,11 @@ namespace ONTO.Controllers
         }
 
         [HttpGet]
-        public ActionResult ManageRoles()
+        public ActionResult ManageRoles(int pageNumber = 1, int pageSize = 5)
         {
             ManageRolesViewModel manageRolesViewModel = new ManageRolesViewModel()
             {
-                ListOfRoles = _RoleManager.Roles.ToList()
+                PagedListOfRoles = _RoleManager.Roles.OrderBy(x => x.Name).ToPagedList(pageNumber, pageSize)
             };
 
             return View(manageRolesViewModel);

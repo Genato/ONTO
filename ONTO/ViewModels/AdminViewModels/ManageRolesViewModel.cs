@@ -1,4 +1,5 @@
 ﻿using ONTO.Models.IdentityModels;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,6 @@ namespace ONTO.ViewModels.AdminViewModels
 {
     public class ManageRolesViewModel
     {
-        public List<OntoIdentityRole> ListOfRoles { get; set; }
+        public IPagedList<OntoIdentityRole> PagedListOfRoles { get; set; }
     }
 }
