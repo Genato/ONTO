@@ -1,0 +1,27 @@
+﻿@model ONTO.ViewModels.AdminViewModels.ManageRolesViewModel
+@using ONTO.Localization
+
+<h2>@Labels.RoleManage</h2>
+<hr />
+
+<div class="manage-roles-div-table">
+
+    @foreach (var item in Model.ListOfRoles)
+    {
+        <div class="div-first-column">
+            @item.Name 
+        </div>
+        <div class="div-column">
+            @Html.ActionLink(Labels.Delete, "DeleteRole") 
+        </div>
+        <div class="div-column">
+            @Html.ActionLink(Labels.Edit, "EditRole") 
+        </div>
+        <div class="div-column">
+            @Html.ActionLink(Labels.ManagerUsers, "ManageUserRole") 
+        </div>
+
+        <hr />
+    }
+
+</div>

@@ -124,6 +124,24 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Email {
@@ -183,6 +201,15 @@ namespace ONTO.Localization {
         public static string LogOff {
             get {
                 return ResourceManager.GetString("LogOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage users.
+        /// </summary>
+        public static string ManagerUsers {
+            get {
+                return ResourceManager.GetString("ManagerUsers", resourceCulture);
             }
         }
         

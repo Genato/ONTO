@@ -294,6 +294,7 @@
     <Compile Include="ViewModels\AccountViewModels\IdentityProfileViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\UserAppSettingsViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\CreateRoleViewModel.cs" />
+    <Compile Include="ViewModels\AdminViewModels\ManageRolesViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -388,9 +389,9 @@
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\UserAppSettings.cshtml" />
     <Content Include="Views\Admin\AdminSettings.cshtml" />
-    <Content Include="Views\Admin\ListRoles.cshtml" />
     <Content Include="Views\Admin\Register.cshtml" />
     <Content Include="Views\Admin\CreateRole.cshtml" />
+    <Content Include="Views\Admin\ManageRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

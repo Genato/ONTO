@@ -140,4 +140,43 @@ footer{
     background-color: #69b1f7;
     color: whitesmoke;
 }
+
+.manage-roles-div-table{
+    width: 40%;
+}
+
+.manage-roles-div-table div {
+    position: relative;
+    float: left;
+    padding: 7px;
+    margin: 2px;
+    font-size: inherit;
+}
+
+.manage-roles-div-table .div-column {
+    border-left-style: solid;
+    border-left-width: 2px;
+}
+
+.manage-roles-div-table .div-column:hover {
+    background-color: #1acef6;
+    border-radius: 10px;
+}
+
+.manage-roles-div-table a:hover{
+    color: black;
+    text-decoration: none;
+}
+
+.manage-roles-div-table .div-first-column {
+    clear: left;
+    width: 30%;
+    font-weight: bold;
+}
+
+.manage-roles-div-table hr{
+    position: relative;
+    clear: both;
+}
+
 /*** Admin settings ***/

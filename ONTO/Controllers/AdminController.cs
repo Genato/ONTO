@@ -105,15 +105,14 @@ namespace ONTO.Controllers
         }
 
         [HttpGet]
-        public ActionResult ListRoles()
-        {
-            return View();
-        }
-
-        [HttpGet]
         public ActionResult ManageRoles()
         {
-            return View();
+            ManageRolesViewModel manageRolesViewModel = new ManageRolesViewModel()
+            {
+                ListOfRoles = _RoleManager.Roles.ToList()
+            };
+
+            return View(manageRolesViewModel);
         }
 
         private UserSettingsLogic _UserSettingsLogic { get; set; }
