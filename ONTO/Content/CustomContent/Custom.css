@@ -118,6 +118,8 @@ footer{
     color: #000000;
     margin-bottom: 0px;
     display: none;
+    width: 100%;
+    border: 0px;
 }
 
 #notification span {
@@ -149,7 +151,7 @@ footer{
     position: relative;
     float: left;
     padding: 7px;
-    margin: 2px;
+    margin: 5px;
     font-size: inherit;
 }
 
@@ -177,6 +179,7 @@ footer{
 .manage-roles-div-table hr{
     position: relative;
     clear: both;
+    margin-top: 5px;
 }
 
 /*** Admin settings ***/

@@ -14,21 +14,28 @@
             @item.Name
         </div>
         <div class="div-column">
-            @Html.ActionLink(Labels.Delete, "DeleteRole")
+            @Ajax.ActionLink(Labels.Delete, "DeleteRole"
+                , routeValues: new { roleName = item.Name }
+                , ajaxOptions: new AjaxOptions
+                                            {
+                                                HttpMethod = "DELETE"
+                                                , OnSuccess = "AddCookieForNotificationBar('lightgreen', data);"
+                                                , OnFailure = "AddCookieForNotificationBar('orangered', data);"
+                                            })
         </div>
         <div class="div-column">
-            @Html.ActionLink(Labels.Edit, "EditRole")
+            @Html.ActionLink(Labels.Edit, "EditRole", routeValues : new { roleName = item.Name })
         </div>
         <div class="div-column">
             @Html.ActionLink(Labels.ManagerUsers, "ManageUserRole")
         </div>
 
-        <hr />
     }
+
+    <hr />
 
 </div>
 
-<hr />
 
 @Labels.Page @(Model.PagedListOfRoles.PageCount < Model.PagedListOfRoles.PageNumber ? 0 : Model.PagedListOfRoles.PageNumber) / @Model.PagedListOfRoles.PageCount
 

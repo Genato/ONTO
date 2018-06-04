@@ -156,6 +156,18 @@
   <data name="RoleAllreadyExists" xml:space="preserve">
     <value>Role with the same name already exists !</value>
   </data>
+  <data name="RoleDeletedError" xml:space="preserve">
+    <value>Deletion of the role failed !</value>
+  </data>
+  <data name="RoleDeletedSuccesfully" xml:space="preserve">
+    <value>Role is deleted succesfully !</value>
+  </data>
+  <data name="RoleEditError" xml:space="preserve">
+    <value>Editing the role name failed !</value>
+  </data>
+  <data name="RoleEditSuccesfully" xml:space="preserve">
+    <value>Role name is changed succesfully !</value>
+  </data>
   <data name="RoleNameMustBeSpecified" xml:space="preserve">
     <value>Role name must be specified !</value>
   </data>

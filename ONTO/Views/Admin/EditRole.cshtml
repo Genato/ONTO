@@ -1,0 +1,28 @@
+﻿@using ONTO.Localization
+
+@model ONTO.ViewModels.AdminViewModels.EditRoleViewModel
+
+<h2>@Labels.</h2>
+<hr />
+
+
+@using (@Ajax.BeginForm("EditRole", "Admin"
+                        , routeValues: null
+                        , htmlAttributes: null
+                        , ajaxOptions: new AjaxOptions
+                                                    {
+                                                        HttpMethod = "PUT"
+                                                        , OnSuccess = "AddCookieForNotificationBar('lightgreen', data);"
+                                                        , OnFailure = "AddCookieForNotificationBar('orangered', data);"
+                                                    }
+                        ))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.LabelFor(m => m.OntoIdentityRole.Name)
+    @Html.TextBoxFor(m => m.OntoIdentityRole.Name)
+
+    @Html.HiddenFor(m => m.OntoIdentityRole.Id)
+
+    <input type="submit" value=@Labels.SaveButtonLabel />
+}

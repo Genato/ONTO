@@ -14,6 +14,8 @@ namespace ONTO
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
             // Localization route - it will be used as a route of the first priority 
             routes.MapRoute(
                 name: "DefaultLocalized",

@@ -156,6 +156,18 @@
   <data name="RoleAllreadyExists" xml:space="preserve">
     <value>Uloga sa istim imenom već postoji !</value>
   </data>
+  <data name="RoleDeletedError" xml:space="preserve">
+    <value>Brisanje uloge neuspjelo !</value>
+  </data>
+  <data name="RoleDeletedSuccesfully" xml:space="preserve">
+    <value>Uloga je uspješno obrisana !</value>
+  </data>
+  <data name="RoleEditError" xml:space="preserve">
+    <value>Uređivanje imena uloge nije uspijelo !</value>
+  </data>
+  <data name="RoleEditSuccesfully" xml:space="preserve">
+    <value>Ime uloge uspješno je promijenjeno !</value>
+  </data>
   <data name="RoleNameMustBeSpecified" xml:space="preserve">
     <value>Polje ime uloga ne može biti prazno !</value>
   </data>

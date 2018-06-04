@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using ONTO.Localization;
 
 namespace ONTO.Controllers
 {
@@ -89,7 +90,13 @@ namespace ONTO.Controllers
             return View();
         }
 
+        /// <summary>
+        /// This function/action
+        /// </summary>
+        /// <param name="createRoleViewModel"></param>
+        /// <returns></returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateRole(CreateRoleViewModel createRoleViewModel)
         {
             OntoIdentityRole role = new OntoIdentityRole(createRoleViewModel.RoleName);
@@ -115,6 +122,48 @@ namespace ONTO.Controllers
 
             return View(manageRolesViewModel);
         }
+
+        /// <summary>
+        /// This action delete role.
+        /// </summary>
+        /// <param name="roleName"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public async Task<JsonResult> DeleteRole(string roleName)
+        {
+            bool result = await _RoleManager.DeleteRoleAsync(roleName);
+
+            string resultMessage = result ? ErrorMsg.RoleDeletedSuccesfully : ErrorMsg.RoleDeletedError;
+
+            return Json(resultMessage);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> EditRole(string roleName)
+        {
+            EditRoleViewModel editRoleViewModel = new EditRoleViewModel()
+            {
+                OntoIdentityRole = await _RoleManager.FindByNameAsync(roleName)
+            };
+
+            return View(editRoleViewModel);
+        }
+
+        /// <summary>
+        /// This action edit role name.
+        /// </summary>
+        /// <param name="ontoIdentityRole"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public async Task<JsonResult> EditRole(OntoIdentityRole ontoIdentityRole)
+        {
+            bool result = await _RoleManager.EditRoleAsync(ontoIdentityRole);
+
+            string resultMessage = result ? ErrorMsg.RoleEditSuccesfully : ErrorMsg.RoleEditError;
+
+            return Json(resultMessage);
+        }
+
 
         private UserSettingsLogic _UserSettingsLogic { get; set; }
         private OntoIdentityRoleManager _RoleManager { get; set; }

@@ -8,6 +8,7 @@ using ONTO.Models.IdentityModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace ONTO.Identity
@@ -15,6 +16,23 @@ namespace ONTO.Identity
     public class OntoIdentityRoleManager : RoleManager<OntoIdentityRole>
     {
         public OntoIdentityRoleManager(IRoleStore<OntoIdentityRole, string> roleStore) : base(roleStore) { }
+
+        public async Task<bool> DeleteRoleAsync(string roleName)
+        {
+            OntoIdentityRole role = await this.FindByNameAsync(roleName);
+
+            return DeleteAsync(role).Result.Succeeded ? true : false;
+        }
+
+        public async Task<bool> EditRoleAsync(OntoIdentityRole newRole)
+        {
+            OntoIdentityRole oldRole = await this.FindByIdAsync(newRole.Id);
+
+            oldRole.Name = newRole.Name;
+
+            return UpdateAsync(oldRole).Result.Succeeded ? true : false;
+        }
+
 
         public static OntoIdentityRoleManager Create(IdentityFactoryOptions<OntoIdentityRoleManager> options, IOwinContext context)
         {

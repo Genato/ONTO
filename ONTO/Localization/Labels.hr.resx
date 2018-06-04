@@ -192,11 +192,14 @@
   <data name="RoleCreate" xml:space="preserve">
     <value>Kreiraj novu ulogu</value>
   </data>
+  <data name="RoleEditName" xml:space="preserve">
+    <value>Uredi ime uloge</value>
+  </data>
   <data name="RoleList" xml:space="preserve">
     <value>Lista uloga</value>
   </data>
   <data name="RoleManage" xml:space="preserve">
-    <value>Manage roles</value>
+    <value>Upravljanje ulogama</value>
   </data>
   <data name="RoleName" xml:space="preserve">
     <value>Ime uloge</value>

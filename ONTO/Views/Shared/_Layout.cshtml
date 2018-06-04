@@ -12,7 +12,7 @@
 </head>
 <body>
     <div id="notification" class="alert alert-success">
-        <span> is an important alert! </span>
+        <span id="notification_text"></span>
         <button class="close">&times;</button>
     </div>
 
@@ -77,6 +77,8 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryAjax")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 

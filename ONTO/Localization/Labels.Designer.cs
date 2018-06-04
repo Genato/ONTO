@@ -286,6 +286,15 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit role name..
+        /// </summary>
+        public static string RoleEditName {
+            get {
+                return ResourceManager.GetString("RoleEditName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to List roles.
         /// </summary>
         public static string RoleList {

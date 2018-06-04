@@ -192,6 +192,9 @@
   <data name="RoleCreate" xml:space="preserve">
     <value>Create new role</value>
   </data>
+  <data name="RoleEditName" xml:space="preserve">
+    <value>Edit role name.</value>
+  </data>
   <data name="RoleList" xml:space="preserve">
     <value>List roles</value>
   </data>
