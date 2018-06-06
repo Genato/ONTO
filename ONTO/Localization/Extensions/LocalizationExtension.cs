@@ -24,8 +24,8 @@ namespace ONTO.Localization.Extensions
             // Get locale from route values
             string lang = (string)HttpContext.Current.Request.RequestContext.RouteData.Values["lang"];
 
-            // If we haven't found appropriate culture - seet default locale then
-            if (lang == null || lang.Contains("lang") == false)
+            // If we haven't found appropriate culture - set default locale
+            if (lang == null || lang.Contains("lang"))
                 lang = ConfigurationManager.AppSettings["DEFAULT_LANGUAGE"];
 
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(lang);

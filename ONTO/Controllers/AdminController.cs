@@ -141,9 +141,12 @@ namespace ONTO.Controllers
         [HttpGet]
         public async Task<ActionResult> EditRole(string roleName)
         {
+            OntoIdentityRole ontoIdentityRole = await _RoleManager.FindByNameAsync(roleName);
+
             EditRoleViewModel editRoleViewModel = new EditRoleViewModel()
             {
-                OntoIdentityRole = await _RoleManager.FindByNameAsync(roleName)
+                RoleID = ontoIdentityRole.Id,
+                RoleName = ontoIdentityRole.Name
             };
 
             return View(editRoleViewModel);
@@ -155,15 +158,14 @@ namespace ONTO.Controllers
         /// <param name="ontoIdentityRole"></param>
         /// <returns></returns>
         [HttpPut]
-        public async Task<JsonResult> EditRole(OntoIdentityRole ontoIdentityRole)
+        public async Task<JsonResult> EditRole(EditRoleViewModel editRoleViewModel)
         {
-            bool result = await _RoleManager.EditRoleAsync(ontoIdentityRole);
+            bool result = await _RoleManager.EditRoleAsync(editRoleViewModel);
 
             string resultMessage = result ? ErrorMsg.RoleEditSuccesfully : ErrorMsg.RoleEditError;
 
             return Json(resultMessage);
         }
-
 
         private UserSettingsLogic _UserSettingsLogic { get; set; }
         private OntoIdentityRoleManager _RoleManager { get; set; }

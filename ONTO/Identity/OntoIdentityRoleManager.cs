@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using ONTO.DbContexts;
 using ONTO.Identity.Extensions;
 using ONTO.Models.IdentityModels;
+using ONTO.ViewModels.AdminViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,11 +25,11 @@ namespace ONTO.Identity
             return DeleteAsync(role).Result.Succeeded ? true : false;
         }
 
-        public async Task<bool> EditRoleAsync(OntoIdentityRole newRole)
+        public async Task<bool> EditRoleAsync(EditRoleViewModel editRoleViewModel)
         {
-            OntoIdentityRole oldRole = await this.FindByIdAsync(newRole.Id);
+            OntoIdentityRole oldRole = await this.FindByIdAsync(editRoleViewModel.RoleID);
 
-            oldRole.Name = newRole.Name;
+            oldRole.Name = editRoleViewModel.RoleName;
 
             return UpdateAsync(oldRole).Result.Succeeded ? true : false;
         }
