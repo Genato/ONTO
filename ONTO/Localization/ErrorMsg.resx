@@ -159,16 +159,13 @@
   <data name="RoleDeletedError" xml:space="preserve">
     <value>Deletion of the role failed !</value>
   </data>
-  <data name="RoleDeletedSuccesfully" xml:space="preserve">
-    <value>Role is deleted succesfully !</value>
-  </data>
   <data name="RoleEditError" xml:space="preserve">
     <value>Editing the role name failed !</value>
   </data>
-  <data name="RoleEditSuccesfully" xml:space="preserve">
-    <value>Role name is changed succesfully !</value>
-  </data>
   <data name="RoleNameMustBeSpecified" xml:space="preserve">
     <value>Role name must be specified !</value>
+  </data>
+  <data name="UserAddedToRoleError" xml:space="preserve">
+    <value>User could not be added to role due to one of the reason (Allready in role, role doesn't exists, etc...)!</value>
   </data>
 </root>

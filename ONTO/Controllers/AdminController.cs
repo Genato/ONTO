@@ -133,7 +133,7 @@ namespace ONTO.Controllers
         {
             bool result = await _RoleManager.DeleteRoleAsync(roleName);
 
-            string resultMessage = result ? ErrorMsg.RoleDeletedSuccesfully : ErrorMsg.RoleDeletedError;
+            string resultMessage = result ? SuccessMsg.RoleDeletedSuccesfully : ErrorMsg.RoleDeletedError;
 
             return Json(resultMessage);
         }
@@ -162,7 +162,25 @@ namespace ONTO.Controllers
         {
             bool result = await _RoleManager.EditRoleAsync(editRoleViewModel);
 
-            string resultMessage = result ? ErrorMsg.RoleEditSuccesfully : ErrorMsg.RoleEditError;
+            string resultMessage = result ? SuccessMsg.RoleEditSuccesfully : ErrorMsg.RoleEditError;
+
+            return Json(resultMessage);
+        }
+
+        [HttpGet]
+        public ActionResult ManageUserRole(string roleName)
+        {
+            return View(new ManageUserRolesViewModel() { RoleName = roleName });
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> AddUserToRole(ManageUserRolesViewModel manageUserRolesViewModel)
+        {
+            OntoIdentityUser ontoIdentityUser = await _UserManager.FindByNameAsync(manageUserRolesViewModel.UserName);
+
+            IdentityResult result = await _UserManager.AddToRoleAsync(ontoIdentityUser.Id, manageUserRolesViewModel.RoleName);
+
+            string resultMessage = result.Succeeded ? SuccessMsg.UserAddedToRoleSuccesfuly : ErrorMsg.UserAddedToRoleError;
 
             return Json(resultMessage);
         }

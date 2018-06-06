@@ -302,6 +302,7 @@
     <Compile Include="ViewModels\AdminViewModels\CreateRoleViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\EditRoleViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\ManageRolesViewModel.cs" />
+    <Compile Include="ViewModels\AdminViewModels\ManageUserRolesViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -403,6 +404,7 @@
     <Content Include="Views\Admin\CreateRole.cshtml" />
     <Content Include="Views\Admin\ManageRoles.cshtml" />
     <Content Include="Views\Admin\EditRole.cshtml" />
+    <Content Include="Views\Admin\ManageUserRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

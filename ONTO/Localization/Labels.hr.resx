@@ -214,6 +214,9 @@
   <data name="UserApplicationSettings" xml:space="preserve">
     <value>Korisničke postavke</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Korisničko ime</value>
+  </data>
   <data name="Users" xml:space="preserve">
     <value>Korisnici</value>
   </data>

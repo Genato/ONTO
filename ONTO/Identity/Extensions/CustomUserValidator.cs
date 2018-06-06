@@ -24,8 +24,9 @@ namespace ONTO.Identity.Extensions
 
         public override Task<IdentityResult> ValidateAsync(OntoIdentityUser user)
         {
-            ValidateEmail(user);
-
+            if(user.EmailConfirmed == false)
+                ValidateEmail(user);
+            
             IdentityResult result = _Errors.Count > 0 ? new IdentityResult(_Errors.ToArray()) : IdentityResult.Success;
 
             return Task.FromResult(result);

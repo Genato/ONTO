@@ -59,5 +59,32 @@ namespace ONTO.Localization {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role is deleted succesfully !.
+        /// </summary>
+        public static string RoleDeletedSuccesfully {
+            get {
+                return ResourceManager.GetString("RoleDeletedSuccesfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role name is changed succesfully !.
+        /// </summary>
+        public static string RoleEditSuccesfully {
+            get {
+                return ResourceManager.GetString("RoleEditSuccesfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to user added to role succesfully !.
+        /// </summary>
+        public static string UserAddedToRoleSuccesfuly {
+            get {
+                return ResourceManager.GetString("UserAddedToRoleSuccesfuly", resourceCulture);
+            }
+        }
     }
 }

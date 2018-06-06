@@ -22,6 +22,15 @@ namespace ONTO.Identity
     {
         public OntoIdentityUserManager(IUserStore<OntoIdentityUser> store) : base(store) { }
 
+        public override Task<IdentityResult> AddToRoleAsync(string userId, string role)
+        {
+            string emailToken = this.GenerateEmailConfirmationToken(userId);
+
+            this.ConfirmEmail(userId, emailToken);
+
+            return base.AddToRoleAsync(userId, role);
+        }
+
         /// <summary>
         /// Method updates all user properties (It doesn't update password !)
         /// </summary>

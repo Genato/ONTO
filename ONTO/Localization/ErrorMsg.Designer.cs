@@ -187,15 +187,6 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Role is deleted succesfully !.
-        /// </summary>
-        public static string RoleDeletedSuccesfully {
-            get {
-                return ResourceManager.GetString("RoleDeletedSuccesfully", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Editing the role name failed !.
         /// </summary>
         public static string RoleEditError {
@@ -205,20 +196,20 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Role name is changed succesfully !.
-        /// </summary>
-        public static string RoleEditSuccesfully {
-            get {
-                return ResourceManager.GetString("RoleEditSuccesfully", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Role name must be specified !.
         /// </summary>
         public static string RoleNameMustBeSpecified {
             get {
                 return ResourceManager.GetString("RoleNameMustBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User could not be added to role due to one of the reason (Allready in role, role doesn&apos;t exists, etc...)!.
+        /// </summary>
+        public static string UserAddedToRoleError {
+            get {
+                return ResourceManager.GetString("UserAddedToRoleError", resourceCulture);
             }
         }
     }
