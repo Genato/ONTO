@@ -126,4 +126,7 @@
   <data name="UserAddedToRoleSuccesfuly" xml:space="preserve">
     <value>Korisnik je upješno dodan ulozi !</value>
   </data>
+  <data name="UserRemovedFromRoleSuccesfully" xml:space="preserve">
+    <value>Korisnik je upješno izbrisan iz uloge !</value>
+  </data>
 </root>

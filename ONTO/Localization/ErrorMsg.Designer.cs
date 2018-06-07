@@ -212,5 +212,14 @@ namespace ONTO.Localization {
                 return ResourceManager.GetString("UserAddedToRoleError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User could not beremoved from role due to one of the reason (User is not in role, role doesn&apos;t exists, etc...)!.
+        /// </summary>
+        public static string UserRemovedFromRoleError {
+            get {
+                return ResourceManager.GetString("UserRemovedFromRoleError", resourceCulture);
+            }
+        }
     }
 }

@@ -13,5 +13,7 @@ namespace ONTO.ViewModels.AdminViewModels
         public string UserName { get; set; }
         [Display(Name = nameof(Labels.RoleName), ResourceType = typeof(Labels))]
         public string RoleName { get; set; }
+
+        public List<string> ListOfUserName { get; set; }
     }
 }

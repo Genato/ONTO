@@ -124,6 +124,9 @@
     <value>Role name is changed succesfully !</value>
   </data>
   <data name="UserAddedToRoleSuccesfuly" xml:space="preserve">
-    <value>user added to role succesfully !</value>
+    <value>User added to role succesfully !</value>
+  </data>
+  <data name="UserRemovedFromRoleSuccesfully" xml:space="preserve">
+    <value>User added from role succesfully !</value>
   </data>
 </root>

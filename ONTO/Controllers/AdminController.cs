@@ -170,9 +170,19 @@ namespace ONTO.Controllers
         [HttpGet]
         public ActionResult ManageUserRole(string roleName)
         {
-            return View(new ManageUserRolesViewModel() { RoleName = roleName });
+            new ManageUserRolesViewModel()
+            {
+                RoleName = roleName
+            };
+
+            return View();
         }
 
+        /// <summary>
+        /// This action adds user to role.
+        /// </summary>
+        /// <param name="manageUserRolesViewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<JsonResult> AddUserToRole(ManageUserRolesViewModel manageUserRolesViewModel)
         {
@@ -181,6 +191,23 @@ namespace ONTO.Controllers
             IdentityResult result = await _UserManager.AddToRoleAsync(ontoIdentityUser.Id, manageUserRolesViewModel.RoleName);
 
             string resultMessage = result.Succeeded ? SuccessMsg.UserAddedToRoleSuccesfuly : ErrorMsg.UserAddedToRoleError;
+
+            return Json(resultMessage);
+        }
+
+        /// <summary>
+        /// This action removes user from role.
+        /// </summary>
+        /// <param name="manageUserRolesViewModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<JsonResult> RemoveUserFromRole(ManageUserRolesViewModel manageUserRolesViewModel)
+        {
+            OntoIdentityUser ontoIdentityUser = await _UserManager.FindByNameAsync(manageUserRolesViewModel.UserName);
+
+            IdentityResult result = await _UserManager.RemoveFromRoleAsync(ontoIdentityUser.Id, manageUserRolesViewModel.RoleName);
+
+            string resultMessage = result.Succeeded ? SuccessMsg.UserRemovedFromRoleSuccesfully : ErrorMsg.UserRemovedFromRoleError;
 
             return Json(resultMessage);
         }

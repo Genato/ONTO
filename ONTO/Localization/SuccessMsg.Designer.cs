@@ -79,11 +79,20 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to user added to role succesfully !.
+        ///   Looks up a localized string similar to User added to role succesfully !.
         /// </summary>
         public static string UserAddedToRoleSuccesfuly {
             get {
                 return ResourceManager.GetString("UserAddedToRoleSuccesfuly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User added from role succesfully !.
+        /// </summary>
+        public static string UserRemovedFromRoleSuccesfully {
+            get {
+                return ResourceManager.GetString("UserRemovedFromRoleSuccesfully", resourceCulture);
             }
         }
     }

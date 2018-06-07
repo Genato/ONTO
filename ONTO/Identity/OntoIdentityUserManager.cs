@@ -22,6 +22,13 @@ namespace ONTO.Identity
     {
         public OntoIdentityUserManager(IUserStore<OntoIdentityUser> store) : base(store) { }
 
+        /// <summary>
+        /// We override this function because we implemeted custom validator "CustomUserValidator" and when we try to add user to role it validate email and says that user email already exists.
+        /// So we need to intercept and validate email before it goes to custom validator.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
         public override Task<IdentityResult> AddToRoleAsync(string userId, string role)
         {
             string emailToken = this.GenerateEmailConfirmationToken(userId);
@@ -30,6 +37,15 @@ namespace ONTO.Identity
 
             return base.AddToRoleAsync(userId, role);
         }
+
+        //public override Task<IdentityResult> RemoveFromRoleAsync(string userId, string role)
+        //{
+        //    string emailToken = this.GenerateEmailConfirmationToken(userId);
+
+        //    this.ConfirmEmail(userId, emailToken);
+
+        //    return base.RemoveFromRoleAsync(userId, role);  
+        //}
 
         /// <summary>
         /// Method updates all user properties (It doesn't update password !)
