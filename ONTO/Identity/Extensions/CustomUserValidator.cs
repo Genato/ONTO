@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using ONTO.Localization;
-using ONTO.Models;
+using ONTO.Models.IdentityModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

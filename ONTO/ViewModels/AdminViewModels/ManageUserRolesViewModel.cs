@@ -1,4 +1,7 @@
-﻿using ONTO.Localization;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using ONTO.Localization;
+using ONTO.Models;
+using ONTO.Models.IdentityModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,6 +17,8 @@ namespace ONTO.ViewModels.AdminViewModels
         [Display(Name = nameof(Labels.RoleName), ResourceType = typeof(Labels))]
         public string RoleName { get; set; }
 
-        public List<string> ListOfUserName { get; set; }
+        public string RoleID { get; set; }
+
+        public List<OntoIdentityUser> ListOfUser { get; set; }
     }
 }

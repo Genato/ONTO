@@ -70,6 +70,15 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add user to role.
+        /// </summary>
+        public static string AddUserToRole {
+            get {
+                return ResourceManager.GetString("AddUserToRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Admin settings.
         /// </summary>
         public static string AdminSettings {
@@ -187,6 +196,15 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of users .
+        /// </summary>
+        public static string ListOfUsers {
+            get {
+                return ResourceManager.GetString("ListOfUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log in.
         /// </summary>
         public static string LogIn {
@@ -210,6 +228,15 @@ namespace ONTO.Localization {
         public static string ManagerUsers {
             get {
                 return ResourceManager.GetString("ManagerUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage user roles.
+        /// </summary>
+        public static string ManageUserRoles {
+            get {
+                return ResourceManager.GetString("ManageUserRoles", resourceCulture);
             }
         }
         
@@ -273,6 +300,15 @@ namespace ONTO.Localization {
         public static string RememberMe {
             get {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove user from role.
+        /// </summary>
+        public static string RemoveUserFromRole {
+            get {
+                return ResourceManager.GetString("RemoveUserFromRole", resourceCulture);
             }
         }
         

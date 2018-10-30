@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="AddUserToRole" xml:space="preserve">
+    <value>Add user to role</value>
+  </data>
   <data name="AdminSettings" xml:space="preserve">
     <value>Admin settings</value>
   </data>
@@ -159,6 +162,9 @@
   <data name="IdentityRoles" xml:space="preserve">
     <value>Roles</value>
   </data>
+  <data name="ListOfUsers" xml:space="preserve">
+    <value>List of users </value>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log in</value>
   </data>
@@ -167,6 +173,9 @@
   </data>
   <data name="ManagerUsers" xml:space="preserve">
     <value>Manage users</value>
+  </data>
+  <data name="ManageUserRoles" xml:space="preserve">
+    <value>Manage user roles</value>
   </data>
   <data name="NewEmail" xml:space="preserve">
     <value>New email</value>
@@ -188,6 +197,9 @@
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Remember me</value>
+  </data>
+  <data name="RemoveUserFromRole" xml:space="preserve">
+    <value>Remove user from role</value>
   </data>
   <data name="RoleCreate" xml:space="preserve">
     <value>Create new role</value>

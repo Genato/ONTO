@@ -34,7 +34,6 @@ namespace ONTO.Identity
             return UpdateAsync(oldRole).Result.Succeeded ? true : false;
         }
 
-
         public static OntoIdentityRoleManager Create(IdentityFactoryOptions<OntoIdentityRoleManager> options, IOwinContext context)
         {
             OntoIdentityRoleManager ontoIdentityRoleManager = new OntoIdentityRoleManager(new RoleStore<OntoIdentityRole>(context.Get<IdentityUserDbContext>()));

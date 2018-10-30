@@ -4,7 +4,7 @@ using Microsoft.Owin.Security;
 using ONTO.BusinessLogic;
 using ONTO.Identity;
 using ONTO.Localization;
-using ONTO.Models;
+using ONTO.Models.IdentityModels;
 using ONTO.Models.ONTOModels;
 using ONTO.ViewModels.AccountViewModels;
 using System.Threading.Tasks;

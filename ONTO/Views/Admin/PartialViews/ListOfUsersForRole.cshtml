@@ -1,0 +1,17 @@
+﻿@using ONTO.Models.IdentityModels
+@using ONTO.Localization
+
+@model List<OntoIdentityUser>
+
+
+<h3>@Labels.ListOfUsers</h3>
+
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+            @item.UserName
+        </li>
+    </ul>
+}
+

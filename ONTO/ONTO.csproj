@@ -405,6 +405,7 @@
     <Content Include="Views\Admin\ManageRoles.cshtml" />
     <Content Include="Views\Admin\EditRole.cshtml" />
     <Content Include="Views\Admin\ManageUserRole.cshtml" />
+    <Content Include="Views\Admin\PartialViews\ListOfUsersForRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

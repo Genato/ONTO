@@ -214,6 +214,15 @@ namespace ONTO.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User with this name does not exists 1.
+        /// </summary>
+        public static string UserDoesNotExists {
+            get {
+                return ResourceManager.GetString("UserDoesNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User could not beremoved from role due to one of the reason (User is not in role, role doesn&apos;t exists, etc...)!.
         /// </summary>
         public static string UserRemovedFromRoleError {

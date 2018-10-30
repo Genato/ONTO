@@ -168,6 +168,9 @@
   <data name="UserAddedToRoleError" xml:space="preserve">
     <value>Korisnika nije moguće dodati ulozi zbog (Korisnik već ima navedenu ulogu, uloga ne postoji, etc...) !</value>
   </data>
+  <data name="UserDoesNotExists" xml:space="preserve">
+    <value>Korisnik sa navedenim korisničkim imenom ne postoji !</value>
+  </data>
   <data name="UserRemovedFromRoleError" xml:space="preserve">
     <value>Korisnika nije moguće izbrisati iz uloge zbog (Korisnik nije u ulozi, uloga ne postoji, etc...) !</value>
   </data>

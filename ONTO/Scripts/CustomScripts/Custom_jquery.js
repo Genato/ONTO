@@ -17,7 +17,6 @@
         $.removeCookie('NotificationBar', { path: '/' });
     });
 
-
     /*
      * AJAX - section
      */
@@ -72,6 +71,11 @@ function showNotificationBar() {
     $("#notification").css("background-color", notificatnotificationTypeColorionType);
     $("#notification").slideDown("slow");
 };
+
+function refreshPartialView_UsersInRole(elementID, roleID) {
+    $("#" + elementID).load("ListOfUsersForRole?roleID=" + roleID);
+}
+
 
 /*
  * HELPER METHODS

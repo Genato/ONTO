@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using static ONTO.Models.OntoIdentityUser;
+using ONTO.Models.IdentityModels;
 using ONTO.ViewModels.AccountViewModels;
 using System.Threading.Tasks;
 using ONTO.Identity.Extensions;
@@ -22,30 +22,14 @@ namespace ONTO.Identity
     {
         public OntoIdentityUserManager(IUserStore<OntoIdentityUser> store) : base(store) { }
 
-        /// <summary>
-        /// We override this function because we implemeted custom validator "CustomUserValidator" and when we try to add user to role it validate email and says that user email already exists.
-        /// So we need to intercept and validate email before it goes to custom validator.
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="role"></param>
-        /// <returns></returns>
-        public override Task<IdentityResult> AddToRoleAsync(string userId, string role)
+        public List<OntoIdentityUser> GetListOfUsersForRole(string roleID)
         {
-            string emailToken = this.GenerateEmailConfirmationToken(userId);
+            var _userRoles = (from userRole in this.Users
+                              where userRole.Roles.Any(f => f.RoleId == roleID)
+                              select userRole).ToList();
 
-            this.ConfirmEmail(userId, emailToken);
-
-            return base.AddToRoleAsync(userId, role);
+            return _userRoles;
         }
-
-        //public override Task<IdentityResult> RemoveFromRoleAsync(string userId, string role)
-        //{
-        //    string emailToken = this.GenerateEmailConfirmationToken(userId);
-
-        //    this.ConfirmEmail(userId, emailToken);
-
-        //    return base.RemoveFromRoleAsync(userId, role);  
-        //}
 
         /// <summary>
         /// Method updates all user properties (It doesn't update password !)
@@ -69,6 +53,22 @@ namespace ONTO.Identity
         public async Task<IdentityResult> UpdateUserPassword(ChangePasswordViewModel changePasswordViewModel)
         {            
             return await this.ChangePasswordAsync(HttpContext.Current.User.Identity.GetUserId(), changePasswordViewModel.CurrentPassword, changePasswordViewModel.NewPassword);
+        }
+
+        /// <summary>
+        /// We override this function because we implemeted custom validator "CustomUserValidator" and when we try to add user to role it validate email and says that user email already exists.
+        /// So we need to intercept and validate email before it goes to custom validator.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public override Task<IdentityResult> AddToRoleAsync(string userId, string role)
+        {
+            string emailToken = this.GenerateEmailConfirmationToken(userId);
+
+            this.ConfirmEmail(userId, emailToken);
+
+            return base.AddToRoleAsync(userId, role);
         }
 
         public static OntoIdentityUserManager Create(IdentityFactoryOptions<OntoIdentityUserManager> options, IOwinContext context)

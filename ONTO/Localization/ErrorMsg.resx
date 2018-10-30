@@ -168,6 +168,9 @@
   <data name="UserAddedToRoleError" xml:space="preserve">
     <value>User could not be added to role due to one of the reason (Allready in role, role doesn't exists, etc...)!</value>
   </data>
+  <data name="UserDoesNotExists" xml:space="preserve">
+    <value>User with this name does not exists 1</value>
+  </data>
   <data name="UserRemovedFromRoleError" xml:space="preserve">
     <value>User could not beremoved from role due to one of the reason (User is not in role, role doesn't exists, etc...)!</value>
   </data>

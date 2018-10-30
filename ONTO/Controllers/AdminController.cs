@@ -14,6 +14,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using ONTO.Localization;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ONTO.Controllers
 {
@@ -168,14 +169,18 @@ namespace ONTO.Controllers
         }
 
         [HttpGet]
-        public ActionResult ManageUserRole(string roleName)
+        public ActionResult ManageUserRole(string roleName, string roleID)
         {
-            new ManageUserRolesViewModel()
+            List<OntoIdentityUser> listOfUsers = _UserManager.GetListOfUsersForRole(roleID);
+
+            ManageUserRolesViewModel manageUserRolesViewModel = new ManageUserRolesViewModel()
             {
-                RoleName = roleName
+                RoleName = roleName,
+                ListOfUser = listOfUsers,
+                RoleID = roleID
             };
 
-            return View();
+            return View(manageUserRolesViewModel);
         }
 
         /// <summary>
@@ -188,9 +193,18 @@ namespace ONTO.Controllers
         {
             OntoIdentityUser ontoIdentityUser = await _UserManager.FindByNameAsync(manageUserRolesViewModel.UserName);
 
+            string resultMessage;
+
+            if (ontoIdentityUser == null)
+            {
+                resultMessage = ErrorMsg.UserDoesNotExists;
+
+                return Json(resultMessage);
+            }
+
             IdentityResult result = await _UserManager.AddToRoleAsync(ontoIdentityUser.Id, manageUserRolesViewModel.RoleName);
 
-            string resultMessage = result.Succeeded ? SuccessMsg.UserAddedToRoleSuccesfuly : ErrorMsg.UserAddedToRoleError;
+            resultMessage = result.Succeeded ? SuccessMsg.UserAddedToRoleSuccesfuly : ErrorMsg.UserAddedToRoleError;
 
             return Json(resultMessage);
         }
@@ -210,6 +224,14 @@ namespace ONTO.Controllers
             string resultMessage = result.Succeeded ? SuccessMsg.UserRemovedFromRoleSuccesfully : ErrorMsg.UserRemovedFromRoleError;
 
             return Json(resultMessage);
+        }
+
+        [HttpGet]
+        public ActionResult ListOfUsersForRole(string roleID)
+        {
+            List<OntoIdentityUser> listOfUsers = _UserManager.GetListOfUsersForRole(roleID);
+
+            return PartialView("~/Views/Admin/PartialViews/ListOfUsersForRole.cshtml", listOfUsers);
         }
 
         private UserSettingsLogic _UserSettingsLogic { get; set; }

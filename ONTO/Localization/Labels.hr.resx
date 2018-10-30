@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>O nama</value>
   </data>
+  <data name="AddUserToRole" xml:space="preserve">
+    <value>Dodaj korisnika u ulogu</value>
+  </data>
   <data name="AdminSettings" xml:space="preserve">
     <value>Upraviteljske postavke</value>
   </data>
@@ -159,6 +162,9 @@
   <data name="IdentityRoles" xml:space="preserve">
     <value>Uloge</value>
   </data>
+  <data name="ListOfUsers" xml:space="preserve">
+    <value>Lista korisnika</value>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Prijavi se</value>
   </data>
@@ -167,6 +173,9 @@
   </data>
   <data name="ManagerUsers" xml:space="preserve">
     <value>Upravljanje korisnicima</value>
+  </data>
+  <data name="ManageUserRoles" xml:space="preserve">
+    <value>Upravljaj korsničkim ulogama</value>
   </data>
   <data name="NewEmail" xml:space="preserve">
     <value>Nova adresa pošte</value>
@@ -188,6 +197,9 @@
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Zapamti me</value>
+  </data>
+  <data name="RemoveUserFromRole" xml:space="preserve">
+    <value>Obriši korisnika iz uloge</value>
   </data>
   <data name="RoleCreate" xml:space="preserve">
     <value>Kreiraj novu ulogu</value>

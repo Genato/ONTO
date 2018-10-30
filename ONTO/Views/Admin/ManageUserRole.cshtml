@@ -2,7 +2,7 @@
 
 @model ONTO.ViewModels.AdminViewModels.ManageUserRolesViewModel
 
-<h2>ManageUserRole</h2>
+<h2>@Labels.ManageUserRoles</h2>
 <hr />
 
 
@@ -14,13 +14,13 @@
                         {
                             HttpMethod = "POST"
                                                         ,
-                            OnSuccess = "AddCookieForNotificationBar('lightgreen', data);"
+                            OnSuccess = "AddCookieForNotificationBar('lightgreen', data); refreshPartialView_UsersInRole('list-of-users-for-role', '" + Model.RoleID + "');"
                             ,
                             OnFailure = "AddCookieForNotificationBar('orangered', data);"
 
                         }))
 {
-    <h3 class="form-group">Add user to role</h3>
+    <h3 class="form-group">@Labels.AddUserToRole</h3>
 
     @Html.AntiForgeryToken()
 
@@ -44,6 +44,10 @@
     </div>
 }
 
+<!--List users in role-->
+    <div id="list-of-users-for-role" class="form-right-border-right-menu">
+        @Html.Partial("~/Views/Admin/PartialViews/ListOfUsersForRole.cshtml", Model.ListOfUser)
+    </div>
 
 <!--Remove user to Role-->
 @using (Ajax.BeginForm("RemoveUserFromRole"
@@ -53,12 +57,12 @@
                         {
                             HttpMethod = "POST"
                                                         ,
-                            OnSuccess = "AddCookieForNotificationBar('lightgreen', data);"
+                            OnSuccess = "AddCookieForNotificationBar('lightgreen', data); refreshPartialView_UsersInRole('list-of-users-for-role', '" +Model.RoleID+ "');"
                             ,
                             OnFailure = "AddCookieForNotificationBar('orangered', data);"
                         }))
 {
-    <h3 class="form-group">Remove user from role</h3>
+    <h3 class="form-group">@Labels.RemoveUserFromRole</h3>
 
     @Html.AntiForgeryToken()
 
@@ -83,4 +87,3 @@
 }
 
 
-<!--List users in role-->

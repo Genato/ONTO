@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Data.Entity;
 
-namespace ONTO.Models
+namespace ONTO.Models.IdentityModels
 {
     public class OntoIdentityUser : IdentityUser
     {
