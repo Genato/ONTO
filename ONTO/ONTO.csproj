@@ -283,6 +283,10 @@
     <Compile Include="Migrations\ONTOMigrations\201802161145316_Changed_Name_Of_UserSettings_ModelTable.Designer.cs">
       <DependentUpon>201802161145316_Changed_Name_Of_UserSettings_ModelTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ONTOMigrations\201811040129195_Added_property_to_KatalogKljučnihBrojevaOtpada.cs" />
+    <Compile Include="Migrations\ONTOMigrations\201811040129195_Added_property_to_KatalogKljučnihBrojevaOtpada.Designer.cs">
+      <DependentUpon>201811040129195_Added_property_to_KatalogKljučnihBrojevaOtpada.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ONTOMigrations\Configuration.cs" />
     <Compile Include="DbContexts\IdentityUserDbContext.cs" />
     <Compile Include="Models\IdentityModels\OntoIdentityRole.cs" />
@@ -358,6 +362,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SuccessMsg.hr.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ONTOMigrations\201811040129195_Added_property_to_KatalogKljučnihBrojevaOtpada.resx">
+      <DependentUpon>201811040129195_Added_property_to_KatalogKljučnihBrojevaOtpada.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\CustomScripts\custom_jquery.js" />

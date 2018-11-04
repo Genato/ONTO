@@ -5,9 +5,9 @@ using System.Web;
 
 namespace ONTO.Models.ONTOModels
 {
-    public class PrateciList
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-    }
+  public class PrateciList
+  {
+    public int ID { get; set; }
+    public string Name { get; set; }
+  }
 }

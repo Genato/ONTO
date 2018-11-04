@@ -8,10 +8,6 @@ footer{
     width: 80%;
 }
 
-.top-navabar-extension {
-    background-color: #070f3d;
-}
-
 /** Form - "profile-form-right-border" **/
 .form-right-border-right-menu {
     position: relative;
@@ -60,9 +56,38 @@ footer{
 }
 /** Form - "profile-form-right-borde" **/
 
+/** navbar - Exstensions  **/
+.top-navabar-extension {
+  background-color: #070f3d;
+}
+
+.custom-navbar-div{
+  position: relative;
+  float: left;
+  height: auto;
+}
+
+.custom-navbar-div span {
+  position: relative;
+  float: left;
+  padding-left: 35px;
+  padding-top: 11px;
+  font-weight: bold;
+  font-size: x-large;
+  font-family: Impact, Charcoal, sans-serif;
+}
+
+.custom-navbar-div a:hover{
+  color: whitesmoke; 
+  text-shadow: 2px 2px 20px #e5fcf3;
+  text-decoration: none;
+}
+
+/** navbar - Exstensions  **/
+
 /** DropdownMenu - navbar **/
 .house-icon {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .dropdown-menu-extension {
@@ -103,7 +128,7 @@ footer{
     transition: 0.3s;
 }
 
-.dropdown-extensiom:hover .dropdown-menu-extension {
+.dropdown-extension:hover .dropdown-menu-extension {
     display: block;
 }
 
